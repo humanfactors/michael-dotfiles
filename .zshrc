@@ -48,6 +48,9 @@ case `uname` in
   ;;
   Linux)
   	export ARCHFLAGS="-arch x86_64"
+		alias say="espeak"
+		alias sshoff="sudo systemctl stop sshd"
+		alias sshon="sudo systemctl start sshd"
   ;;
 esac
 
