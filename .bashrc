@@ -6,6 +6,9 @@ alias lm='ls -la | less'
 alias ..='cd ..'
 alias ...='cd .. ; cd ..'
 
+alias ls='ls --color=auto'
+PS1='[\u@\h \W]\$ '
+
 alias py='python3'
 
 export LANG=en_US.UTF-8
