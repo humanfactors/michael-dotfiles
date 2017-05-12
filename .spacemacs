@@ -314,13 +314,20 @@ This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
 
+  ;; display time in powerline
+  (spacemacs|define-mode-line-segment date-time-segment
+    (shell-command-to-string "echo -n \"⏰  $(date '+%a %d %b %I:%M%p')\""))
+  (add-to-list 'spacemacs-mode-line-right 'date-time-segment)
+  )
 
+  (defun insert-current-date () (interactive)
+  (insert (shell-command-to-string "echo -n $(date +%Y-%d-%m)")))
   ;; Color Fix
   (setq powerline-default-separator 'utf-8)
 
   ;; Emacs Shell Config
   (setq explicit-shell-file-name "/bin/bash")
-  SHELL=/bin/bash emacs
+  
   (with-eval-after-load 'org
     org-agenda-files '("~/Dropbox/org")
     org-log-done 'time
@@ -333,45 +340,37 @@ you should place your code here."
   (setq deft-text-mode 'markdown-mode)
   (setq deft-extension "md")
   (global-set-key [f5] 'deft)
-
+  
+  (spacemacs/set-leader-keys "C1" (lambda () (interactive) (find-file "~/Dropbox/org/phd-notes.org")))
+  (spacemacs/set-leader-keys "C2" (lambda () (interactive) (find-file "~/Dropbox/org/freelance.org")))
+  (spacemacs/set-leader-keys "C3" (lambda () (interactive) (find-file "~/Dropbox/org/TODOs.org")))
   ;; Elfeed config
-  (global-set-key [f8] 'elfeed)
-  (add-hook 'elfeed-show-mode-hook 'visual-line-mode)
-  (setq elfeed-feeds
-        '("http://journals.sagepub.com/action/showFeed?ui=0&mi=ehikzz&ai=2b4&jc=hfsa&type=etoc&feed=rss"
-          "http://feeds.feedburner.com/apa-journals-xlm?format=xml"
-          "http://www.tandfonline.com/action/showFeed?ui=0&mi=3fqos0&ai=z4&jc=pqje20&type=etoc&feed=rss"
-          "http://onlinelibrary.wiley.com/rss/journal/10.1002/(ISSN)1099-0720"
-         "http://content.apa.org/journals/xap.rss"
-          "http://econtent.hogrefe.com/action/showFeed?type=etoc&feed=rss&jc=apf"
-          "http://journals.sagepub.com/action/redirect?url=%2Frss%2Ferg"
-          "http://journals.sagepub.com/action/redirect?url=%2Frss%2Fhfs"))
 
-      ;; Window arrangement pop and push
-      (define-key evil-insert-state-map (kbd "C-x C-p") 'winstack-pop)
-      (define-key evil-insert-state-map (kbd "C-x C-u") 'winstack-push)
+  ;; Window arrangement pop and push
+  (define-key evil-insert-state-map (kbd "C-x C-p") 'winstack-pop)
+  (define-key evil-insert-state-map (kbd "C-x C-u") 'winstack-push)
 
-      (defvar winstack-stack '()
-          "A Stack holding window configurations.
-      Use `winstack-push' and
-      `winstack-pop' to modify it.")
-      (defun winstack-push()
-        "Push the current window configuration onto `winstack-stack'."
-        (interactive)
-        (if (and (window-configuration-p (first winstack-stack))
-          (compare-window-configurations (first winstack-stack) (current-window-configuration)))
-            (message "Current config already pushed")
+  (defvar winstack-stack '()
+  "A Stack holding window configurations.
+  Use `winstack-push' and
+  `winstack-pop' to modify it.")
+  (defun winstack-push()
+  "Push the current window configuration onto `winstack-stack'."
+    (interactive)
+      (if (and (window-configuration-p (first winstack-stack))
+        (compare-window-configurations (first winstack-stack) (current-window-configuration)))
+          (message "Current config already pushed")
           (progn (push (current-window-configuration) winstack-stack)
-                 (message (concat "pushed " (number-to-string
-                                             (length (window-list (selected-frame)))) " frame config")))))
+            (message (concat "pushed " (number-to-string
+              (length (window-list (selected-frame)))) " frame config")))))
 
-      (defun winstack-pop()
-        "Pop the last window configuration off `winstack-stack' and apply it."
-        (interactive)
-        (if (first winstack-stack)
-            (progn (set-window-configuration (pop winstack-stack))
-                   (message "popped"))
-          (message "End of window stack")))
+   (defun winstack-pop()
+   "Pop the last window configuration off `winstack-stack' and apply it."
+    (interactive)
+      (if (first winstack-stack)
+        (progn (set-window-configuration (pop winstack-stack))
+          (message "popped"))
+            (message "End of window stack")))
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
