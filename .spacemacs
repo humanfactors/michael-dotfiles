@@ -346,6 +346,7 @@ you should place your code here."
   (setq deft-text-mode 'markdown-mode)
   (setq deft-extension "md")
   (global-set-key [f5] 'deft)
+  (setq powerline-default-separator 'utf-8)
 
   (spacemacs/set-leader-keys "C1" (lambda () (interactive) (find-file "~/Dropbox/org/phd-notes.org")))
   (spacemacs/set-leader-keys "C2" (lambda () (interactive) (find-file "~/Dropbox/org/freelance.org")))
