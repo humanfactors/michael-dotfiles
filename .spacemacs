@@ -317,7 +317,7 @@ you should place your code here."
   (spacemacs|define-mode-line-segment date-time-segment
     (shell-command-to-string "echo -n \"⏰  $(date '+%a %d %b %I:%M%p')\""))
   (add-to-list 'spacemacs-mode-line-right 'date-time-segment)
-  )
+
 
   (defun insert-current-date () (interactive)
     (insert (shell-command-to-string "echo -n $(date +%Y-%d-%m)")))
@@ -326,7 +326,7 @@ you should place your code here."
 
   ;; Emacs Shell Config
   (setq explicit-shell-file-name "/bin/bash")
-  
+
   (with-eval-after-load 'org
     org-agenda-files '("~/Dropbox/org")
     org-log-done 'time
@@ -339,7 +339,7 @@ you should place your code here."
   (setq deft-text-mode 'markdown-mode)
   (setq deft-extension "md")
   (global-set-key [f5] 'deft)
-  
+
   (spacemacs/set-leader-keys "C1" (lambda () (interactive) (find-file "~/Dropbox/org/phd-notes.org")))
   (spacemacs/set-leader-keys "C2" (lambda () (interactive) (find-file "~/Dropbox/org/freelance.org")))
   (spacemacs/set-leader-keys "C3" (lambda () (interactive) (find-file "~/Dropbox/org/TODOs.org")))
@@ -379,9 +379,6 @@ you should place your code here."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(elfeed-goodies/entry-pane-position (quote bottom))
- '(elfeed-goodies/entry-pane-size 0.5)
- '(elfeed-goodies/powerline-default-separator (quote box))
  '(org-agenda-files (quote ("~/Dropbox/org")))
  '(package-selected-packages
    (quote
