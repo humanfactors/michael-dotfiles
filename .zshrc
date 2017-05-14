@@ -43,11 +43,13 @@ case `uname` in
 		bindkey "^U" backward-kill-line
 		source ~/perl5/perlbrew/etc/bashrc
 		alias m2l="pbpaste | pandoc -f markdown -t latex | pbcopy"
-		alias sshfwd="ssh -D 8080 -C -N skanky@bagot.duckdns.org -p 1420"
+		alias sshfwd="ssh -D 1420 -C -N skanky@bagot.duckdns.org -p 1420"
+		alias tunnelon='networksetup -setsocksfirewallproxy "Wi-Fi" localhost 1420'
+		alias tunneloff='networksetup -setsocksfirewallproxystate "Wi-Fi" off'
 		alias osx='less ~/.oh-my-zsh/plugins/osx/README.md'
   ;;
   Linux)
-  	export ARCHFLAGS="-arch x86_64"
+  		export ARCHFLAGS="-arch x86_64"
 		alias say="espeak"
 		alias sshoff="sudo systemctl stop sshd"
 		alias sshon="sudo systemctl start sshd"
