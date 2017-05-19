@@ -41,7 +41,6 @@ case `uname` in
     # MacOS Config
 		test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 		bindkey "^U" backward-kill-line
-		source ~/perl5/perlbrew/etc/bashrc
 		alias m2l="pbpaste | pandoc -f markdown -t latex | pbcopy"
 		alias sshfwd="ssh -D 1420 -C -N skanky@bagot.duckdns.org -p 1420"
 		alias tunnelon='networksetup -setsocksfirewallproxy "Wi-Fi" localhost 1420'
