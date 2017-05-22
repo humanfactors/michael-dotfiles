@@ -352,7 +352,7 @@ you should place your code here."
   (spacemacs/set-leader-keys "C2" (lambda () (interactive) (find-file "~/Dropbox/org/freelance.org")))
   (spacemacs/set-leader-keys "C3" (lambda () (interactive) (find-file "~/Dropbox/org/TODOs.org")))
   ;; Elfeed config
-
+  (setq ispell-local-dictionary "en_US")
   ;; Window arrangement pop and push
   (define-key evil-insert-state-map (kbd "C-x C-p") 'winstack-pop)
   (define-key evil-insert-state-map (kbd "C-x C-u") 'winstack-push)

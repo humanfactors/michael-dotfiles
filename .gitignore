@@ -2,6 +2,6 @@
 !.zshrc
 !.spacemacs
 !.skankybin/
-.skankybin/.task
+!.skankybin/*
 !.vimrc
 !.bashrc
