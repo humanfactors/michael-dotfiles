@@ -77,6 +77,7 @@ chpwd_functions=( auto-ls $chpwd_functions )
 # Key Binds and Aliases
 
 alias t='python2 ~/.skankybin/t/t.py --task-dir ~/Dropbox/Notes --list tasks'
+t | lolcat
 alias zshrc="$EDITOR ~/.zshrc"
 alias py='python3'
 alias whatsmyip="wget -qO- http://ipecho.net/plain ; echo"
