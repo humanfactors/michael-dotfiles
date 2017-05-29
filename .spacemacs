@@ -42,12 +42,13 @@ values."
      ;; <M-m f e R> (Emacs style) to install them.
      ;; ----------------------------------------------------------------
      helm
+     colors
      deft
      auto-completion
      ;; better-defaults
      emacs-lisp
      pandoc
-     ;; git
+     git
      markdown
      org
      ;; (shell :variables
@@ -317,66 +318,44 @@ This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
 
-  ;; (etq powerline-default-separator 'utf-8)
 
-  ;; Emacs Shell Config
+  ;; Interactive Shell Config
   (setq explicit-shell-file-name "/bin/bash")
-  (delete-selection-mode 1)
   (with-eval-after-load 'org
     org-agenda-files '("~/Dropbox/org")
     org-log-done 'time
     org-startup-truncated
     )
+  
+  ;; General settings
+  (delete-selection-mode 1)
+  (setq ispell-local-dictionary "en_US")
+  ;; (etq powerline-default-separator 'utf-8)
 
+  ;; Colors
+  (add-hook 'prog-mode-hook' 'rainbow-mode)
+
+  ;; Org Mode
   (setq org-capture-templates
   '(("t" "Todo" entry (file+headline "~/org/TODOs.org" "Tasks")
          "* TODO %?\n  %i\n  %a")
     ("j" "Journal" entry (file+datetree "~/org/diary.org")
          "* %?\nEntered on %U\n  %i\n")))
-
-
-  ;; Deft Config
+  (spacemacs/set-leader-keys "ocp" (lambda () (interactive) (find-file "~/Dropbox/org/phd-notes.org")))
+  (spacemacs/set-leader-keys "ocf" (lambda () (interactive) (find-file "~/Dropbox/org/freelance.org")))
+  (spacemacs/set-leader-keys "oct" (lambda () (interactive) (find-file "~/Dropbox/org/TODOs.org")))
+  
+  ;; Deft (nv) config
   (setq deft-extensions '("md" "tex" "org" "txt"))
   (setq deft-directory "~/Dropbox/Notes")
   (setq deft-text-mode 'markdown-mode)
   (global-set-key [f5] 'deft)
-  ;; (setq powerline-default-separator 'utf-8)
   (add-hook 'pandoc-mode-hook 'pandoc-load-default-settings)
 
   ;; (setq mouse-wheel-scroll-amount '(2 ((shift) . 1))) ;; two lines at a time
   ;; (setq mouse-wheel-progressive-speed nil) ;; don't accelerate scrolling
   ;; (setq mouse-wheel-follow-mouse 't) ;; scroll window under mouse
 
-  (spacemacs/set-leader-keys "C1" (lambda () (interactive) (find-file "~/Dropbox/org/phd-notes.org")))
-  (spacemacs/set-leader-keys "C2" (lambda () (interactive) (find-file "~/Dropbox/org/freelance.org")))
-  (spacemacs/set-leader-keys "C3" (lambda () (interactive) (find-file "~/Dropbox/org/TODOs.org")))
-  ;; Elfeed config
-  (setq ispell-local-dictionary "en_US")
-  ;; Window arrangement pop and push
-  (define-key evil-insert-state-map (kbd "C-x C-p") 'winstack-pop)
-  (define-key evil-insert-state-map (kbd "C-x C-u") 'winstack-push)
-
-  (defvar winstack-stack '()
-  "A Stack holding window configurations.
-  Use `winstack-push' and
-  `winstack-pop' to modify it.")
-  (defun winstack-push()
-  "Push the current window configuration onto `winstack-stack'."
-    (interactive)
-      (if (and (window-configuration-p (first winstack-stack))
-        (compare-window-configurations (first winstack-stack) (current-window-configuration)))
-          (message "Current config already pushed")
-          (progn (push (current-window-configuration) winstack-stack)
-            (message (concat "pushed " (number-to-string
-              (length (window-list (selected-frame)))) " frame config")))))
-
-   (defun winstack-pop()
-   "Pop the last window configuration off `winstack-stack' and apply it."
-    (interactive)
-      (if (first winstack-stack)
-        (progn (set-window-configuration (pop winstack-stack))
-          (message "popped"))
-            (message "End of window stack")))
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
