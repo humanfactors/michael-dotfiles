@@ -34,7 +34,7 @@ export LANG=en_AU.UTF-8
 export LC_ALL=en_AU.UTF-8
 export EDITOR=vim
 export NOTES_DIR="$HOME/Dropbox/Notes"
-
+PATH="$HOME/.skankybin:$PATH"
 # OS Specific Settings
 case `uname` in
   Darwin)
@@ -52,6 +52,7 @@ case `uname` in
 		alias say="espeak"
 		alias sshoff="sudo systemctl stop sshd"
 		alias sshon="sudo systemctl start sshd"
+		export PATH="$HOME/.node_modules/bin:/home/skanky/.gem/ruby/2.4.0/bin:$PATH"
   ;;
 esac
 
