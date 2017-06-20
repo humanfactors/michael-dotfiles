@@ -41,14 +41,15 @@ case `uname` in
     # MacOS Config
 		test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 		bindkey "^U" backward-kill-line
-		source ~/perl5/perlbrew/etc/bashrc
 		alias m2l="pbpaste | pandoc -f markdown -t latex | pbcopy"
-		alias sshfwd="ssh -D 8080 -C -N skanky@bagot.duckdns.org -p 1420"
+		alias sshfwd="ssh -D 1420 -C -N skanky@bagot.duckdns.org -p 1420"
+		alias tunnelon='networksetup -setsocksfirewallproxy "Wi-Fi" localhost 1420'
+		alias tunneloff='networksetup -setsocksfirewallproxystate "Wi-Fi" off'
 		alias osx='less ~/.oh-my-zsh/plugins/osx/README.md'
 
   ;;
   Linux)
-  	export ARCHFLAGS="-arch x86_64"
+  		export ARCHFLAGS="-arch x86_64"
 		alias say="espeak"
 		alias sshoff="sudo systemctl stop sshd"
 		alias sshon="sudo systemctl start sshd"
@@ -78,6 +79,7 @@ chpwd_functions=( auto-ls $chpwd_functions )
 # Key Binds and Aliases
 
 alias t='python2 ~/.skankybin/t/t.py --task-dir ~/Dropbox/Notes --list tasks'
+t | lolcat
 alias zshrc="$EDITOR ~/.zshrc"
 alias py='python3'
 alias whatsmyip="wget -qO- http://ipecho.net/plain ; echo"
