@@ -332,6 +332,8 @@ you should place your code here."
   (global-set-key (kbd "C-c C-#") (lambda () (interactive) (insert "⌘")))
 
   ;; Interaction Config
+  (setq default evil-cross-lines t)
+  (setq mac-command-modifier 'meta)
   (global-visual-line-mode t)
   (global-set-key [f8] 'neotree-toggle)
   ;; Make evil-mode up/down operate in screen lines instead of logical lines
@@ -340,6 +342,13 @@ you should place your code here."
   ;; Also in visual mode
   (define-key evil-visual-state-map "j" 'evil-next-visual-line)
   (define-key evil-visual-state-map "k" 'evil-previous-visual-line)
+
+  ;; Insert Data time into Spacemacs Keyboard shortcut
+    (defun insert-current-datetime () (interactive)
+         (insert (shell-command-to-string "echo -n $(date '+%A (%B %d) @ %H:%m')")))
+  (global-set-key "\C-x\M-d" `insert-current-datetime)
+  (spacemacs/set-leader-keys "oit" 'insert-current-datetime)
+
   
   ;; Cua Mode
   (cua-mode t)
@@ -392,6 +401,19 @@ you should place your code here."
 
     ("j" "Journal" entry (file+datetree "~/org/diary.org")
          "* %?\nEntered on %U\n  %i\n")))
+
+;;  (setq org-capture-templates
+;;        '(("m" "Medication" plain (file+headline "~/Dropbox/org/BreeMedications.org" "Medication Checklist")
+;;           "%<%A (%B %d) @ %H:%m> - %^{Medication} %?\n")
+;;          ("f" "Food" plain (file+headline "~/Dropbox/org/BreeMedications.org" "Food")
+;;           "%<%A (%B %d) @ %H:%m> - %^{Food} %?\n")
+;;          ("T" "Toilet" plain (file+headline "~/Dropbox/org/BreeMedications.org" "Toilet")
+;;           "%<%A (%B %d) @ %H:%m> - %^{Toilet} %?\n")))
+
+  ;; Markdown Mode
+  (setq markdown-italic-underscore t)
+  (setq markdown-asymmetric-header t)
+  (setq markdown-list-indent-width 4)
 
   ;; Deft (nv) config
   (setq deft-extensions '("md" "tex" "org" "txt"))
