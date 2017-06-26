@@ -359,6 +359,7 @@ you should place your code here."
   (setq cua-auto-tabify-rectangles nil) ;; Don't tabify after rectangle commands
   (define-key cua-global-keymap [C-return] nil)  ;;rebind rectangle mark as I want to use C-return for R/ESS and
   (delete-selection-mode 1)
+  (setq save-interprogram-paste-before-kill t)
 
   ;; Shell Config
   (setq explicit-shell-file-name "/bin/bash")
@@ -413,8 +414,8 @@ you should place your code here."
 ;;           "%<%A (%B %d) @ %H:%m> - %^{Toilet} %?\n")))
 
   ;; Markdown Mode
-  ;; (setq markdown-italic-underscore t)
-  ;; (setq markdown-asymmetric-header t)
+  (setq markdown-italic-underscore t)
+  (setq markdown-asymmetric-header t)
   (setq markdown-list-indent-width 4)
 
   ;; Deft (nv) config
