@@ -31,10 +31,10 @@ values."
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
    '(
-     html
+     ;; html
      csv
      latex
-     themes-megapack
+     ;; themes-megapack
      yaml
      octave
      python
@@ -111,7 +111,7 @@ values."
    ;; with `:variables' keyword (similar to layers). Check the editing styles
    ;; section of the documentation for details on available variables.
    ;; (default 'vim)
-   dotspacemacs-editing-style 'vim
+   dotspacemacs-editing-style 'hybrid
    ;; If non nil output loading progress in `*Messages*' buffer. (default nil)
    dotspacemacs-verbose-loading nil
    ;; Specify the startup banner. Default value is `official', it displays
@@ -185,7 +185,7 @@ values."
    dotspacemacs-default-layout-name "Main"
    ;; If non nil the default layout name is displayed in the mode-line.
    ;; (default nil)
-   dotspacemacs-display-default-layout 1
+   dotspacemacs-display-default-layout nil
    ;; If non nil then the last auto saved layouts are resume automatically upon
    ;; start. (default nil)
    dotspacemacs-auto-resume-layouts t
@@ -323,7 +323,7 @@ you should place your code here."
 
   ;; GUI Configuration
   (menu-bar-mode 1)
-  (setq spaceline-org-clock-p t)
+  ;; (setq spaceline-org-clock-p t)
   (setq powerline-default-separator 'utf-8)
   (setq word-wrap 1)
 
@@ -332,6 +332,8 @@ you should place your code here."
   (global-set-key (kbd "C-c C-#") (lambda () (interactive) (insert "⌘")))
 
   ;; Interaction Config
+  ;; (setq default evil-cross-lines t)
+  (setq mac-command-modifier 'meta)
   (global-visual-line-mode t)
   (global-set-key [f8] 'neotree-toggle)
   ;; Make evil-mode up/down operate in screen lines instead of logical lines
@@ -340,7 +342,16 @@ you should place your code here."
   ;; Also in visual mode
   (define-key evil-visual-state-map "j" 'evil-next-visual-line)
   (define-key evil-visual-state-map "k" 'evil-previous-visual-line)
-  
+
+  ;; Insert Data time into Spacemacs Keyboard shortcut
+    (defun insert-current-datetime () (interactive)
+         (insert (shell-command-to-string "echo -n $(date '+%A (%B %d) @ %H:%m')")))
+    (global-set-key "\C-x\M-d" `insert-current-datetime)
+    (global-set-key (kbd "C-<prior>") `previous-buffer)
+    (global-set-key (kbd "C-<next>") `next-buffer)
+    (spacemacs/set-leader-keys "oit" 'insert-current-datetime)
+
+
   ;; Cua Mode
   (cua-mode t)
   (transient-mark-mode 1) ;; No region when it is not highlighted
@@ -348,12 +359,13 @@ you should place your code here."
   (setq cua-auto-tabify-rectangles nil) ;; Don't tabify after rectangle commands
   (define-key cua-global-keymap [C-return] nil)  ;;rebind rectangle mark as I want to use C-return for R/ESS and
   (delete-selection-mode 1)
-  
+  (setq save-interprogram-paste-before-kill t)
+
   ;; Shell Config
   (setq explicit-shell-file-name "/bin/bash")
 
   ;; Pandoc
-  (setq org-pandoc-options-for-markdown '((atx-headers . t)))
+  ;; (setq org-pandoc-options-for-markdown '((atx-headers . t)))
   (setq org-pandoc-options-for-latex-pdf '((latex-engine . "xelatex")))
   ;; Org Mode
   (setf org-blank-before-new-entry '((heading . nil) (plain-list-item . nil)))
@@ -392,6 +404,19 @@ you should place your code here."
 
     ("j" "Journal" entry (file+datetree "~/org/diary.org")
          "* %?\nEntered on %U\n  %i\n")))
+
+;;  (setq org-capture-templates
+;;        '(("m" "Medication" plain (file+headline "~/Dropbox/org/BreeMedications.org" "Medication Checklist")
+;;           "%<%A (%B %d) @ %H:%m> - %^{Medication} %?\n")
+;;          ("f" "Food" plain (file+headline "~/Dropbox/org/BreeMedications.org" "Food")
+;;           "%<%A (%B %d) @ %H:%m> - %^{Food} %?\n")
+;;          ("T" "Toilet" plain (file+headline "~/Dropbox/org/BreeMedications.org" "Toilet")
+;;           "%<%A (%B %d) @ %H:%m> - %^{Toilet} %?\n")))
+
+  ;; Markdown Mode
+  (setq markdown-italic-underscore t)
+  (setq markdown-asymmetric-header t)
+  (setq markdown-list-indent-width 4)
 
   ;; Deft (nv) config
   (setq deft-extensions '("md" "tex" "org" "txt"))
