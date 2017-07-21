@@ -53,7 +53,6 @@ case `uname` in
 		alias say="espeak"
 		alias sshoff="sudo systemctl stop sshd"
 		alias sshon="sudo systemctl start sshd"
-		PATH="$HOME/.node_modules/bin:/home/skanky/.gem/ruby/2.4.0/bin:$PATH"
   ;;
 esac
 
@@ -63,7 +62,6 @@ export PATH=$HOME/.skankybin:/usr/local/sbin:$PATH
 export NOTES_DIR=~/Dropbox/Notes
 
 source "${HOME}/.skankybin/music.sh"
-source "${HOME}/.skankybin/notes.sh"
 source "${HOME}/.skankybin/helpers.sh"
 
 # Auto ls on directory change
@@ -78,8 +76,6 @@ chpwd_functions=( auto-ls $chpwd_functions )
 # _,.-'~'-.,__,.-'~'-.,__,.-'~'-.,__,.-'~'-.,__
 # Key Binds and Aliases
 
-alias t='python2 ~/.skankybin/t/t.py --task-dir ~/Dropbox/Notes --list tasks'
-t | lolcat
 alias zshrc="$EDITOR ~/.zshrc"
 alias py='python3'
 alias whatsmyip="wget -qO- http://ipecho.net/plain ; echo"
