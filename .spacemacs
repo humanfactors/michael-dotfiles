@@ -120,8 +120,8 @@ values."
    ;; banner, `random' chooses a random text banner in `core/banners'
    ;; directory. A string value must be a path to an image format supported
    ;; by your Emacs build.
-   ;  ; If the value is nil then no banner is displayed. (default 'official)
-   dotspacemacs-startup-banner nil
+   ;; If the value is nil then no banner is displayed. (default 'official)
+   dotspacemacs-startup-banner 'official
    ;; List of items to show in startup buffer or an association list of
    ;; the form `(list-type . list-size)`. If nil then it is disabled.
    ;; Possible values for list-type are:
@@ -129,8 +129,7 @@ values."
    ;; List sizes may be nil, in which case
    ;; `spacemacs-buffer-startup-lists-length' takes effect.
    dotspacemacs-startup-lists '((todos . 15)
-				(recents . 5)
-                                (projects . 5))
+                                (projects . 7))
    ;; True if the home buffer should respond to resize events.
    dotspacemacs-startup-buffer-responsive t
    ;; Default major mode of the scratch buffer (default `text-mode')
@@ -140,13 +139,13 @@ values."
    ;; with 2 themes variants, one dark and one light)
    dotspacemacs-themes '(leuven
                          spacemacs-dark
-                         solarized-light)
+                         spacemacs-light)
    ;; If non nil the cursor color matches the state color in GUI Emacs.
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
    ;; quickly tweak the mode-line size to make separators look not too crappy.
    dotspacemacs-default-font '("Go Mono for Powerline"
-                               :size 14
+                               :size 12
                                :weight normal
                                :width normal
                                :powerline-scale 1.0)
@@ -185,7 +184,7 @@ values."
    ;; (default nil)
    dotspacemacs-ex-substitute-global nil
    ;; Name of the default layout (default "Default")
-   dotspacemacs-default-layout-name "Main"
+   dotspacemacs-default-layout-name "Default"
    ;; If non nil the default layout name is displayed in the mode-line.
    ;; (default nil)
    dotspacemacs-display-default-layout nil
@@ -314,6 +313,7 @@ executes.
 before packages are loaded. If you are unsure, you should try in setting them in
 `dotspacemacs/user-config' first."
   )
+
 (defun dotspacemacs/user-config ()
   "Configuration function for user code.
 This function is called at the very end of Spacemacs initialization after
