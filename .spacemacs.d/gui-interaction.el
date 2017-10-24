@@ -24,6 +24,23 @@
 ;; Evil fine undo
 (setq evil-want-fine-undo t)
 
+;; Disable autosaving and backups and lockfiles
+(setq
+ auto-save-default nil
+ backup-inhibited t
+ create-lockfiles nil)
+
+
+;; Allow 20MB of memory (instead of 0.76MB default) before calling
+;; garbage collection. This means GC runs less often, which speeds
+;; up some operations
+(setq gc-cons-threshold 20000000)
+
+;; By default, BACKSPACE ON EMACS turns a tab character into a set of spaces
+;; & deletes one. This sets backspace to delete 1 character instead of 1 column.
+(global-set-key (kbd "DEL") 'backward-delete-char)
+
+
 ;; Search settings
 (define-key global-map [remap isearch-forward] 'isearch-forward-regexp)
 (define-key global-map [remap isearch-backward] 'isearch-backward-regexp)
