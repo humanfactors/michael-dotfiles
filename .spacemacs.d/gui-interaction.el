@@ -26,7 +26,7 @@
 
 ;; Disable autosaving and backups and lockfiles
 (setq
- auto-save-default nil
+ auto-save-default t
  backup-inhibited t
  create-lockfiles nil)
 

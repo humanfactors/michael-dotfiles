@@ -38,8 +38,8 @@
 
   ;; Org Mode
   (setf org-blank-before-new-entry '((heading . nil) (plain-list-item . nil)))
+  (setq org-hierarchical-todo-statistics nil)
   (setq org-bullets-mode nil)
-  (setq org-blank-before-new-entry nil)
   (setq org-support-shift-select t)
 
   (defun org-insert-subheading-end ()

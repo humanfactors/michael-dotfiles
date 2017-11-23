@@ -19,13 +19,15 @@
 (define-key global-map (kbd "s-=") 'text-scale-increase)
 (define-key global-map (kbd "s--") 'text-scale-decrease)
 
-
+(global-set-key (kbd "s-n") 'new-frame)
 (global-set-key (kbd "C-z") 'undo)
 (global-set-key (kbd "M-<backspace>") 'backward-kill-word)
 (global-set-key (kbd "s-z") 'undo)
 (global-set-key (kbd "s-Z") 'undo-tree-redo)
 (global-set-key (kbd "M-<prior>") `previous-buffer)
 (global-set-key (kbd "M-<next>") `next-buffer)
+(global-set-key (kbd "s-<prior>") `previous-buffer)
+(global-set-key (kbd "s-<next>") `next-buffer)
 (global-set-key "\C-x\M-d" `insert-current-datetime)
 (global-set-key [f8] 'neotree-toggle)
 (global-set-key [f5] 'deft)

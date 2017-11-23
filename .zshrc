@@ -16,7 +16,7 @@ case `uname` in
   ;;
   Linux)
     # Linux Config
-		plugins=(git zsh-autosuggestions colored-man golang zsh-syntax-highlighting emacs)
+		plugins=(git zsh-autosuggestions colored-man golang zsh-syntax-highlighting )
   ;;
 esac
 
