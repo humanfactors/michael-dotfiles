@@ -1,6 +1,0 @@
-#!/bin/bash
-# This script is called "et" for "emacs terminal"
-TERM=xterm-256color
-
-exec emacsclient -a "" -t "$@"
-
