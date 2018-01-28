@@ -1,5 +1,0 @@
-#!/usr/bin/env bash
-
-# Checks if there's a frame open
-
-emacs -q -nw
