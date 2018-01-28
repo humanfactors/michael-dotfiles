@@ -1,4 +1,4 @@
-#!
+#!/usr/bin/env bash
 x() {
   if [[ -f "$1" ]]; then
     case "$1" in
@@ -10,19 +10,19 @@ x() {
         lrunzip "$1" && [[ -d "$b" ]] && cd "$b" || return 0 ;;
       *.tar.bz2)
         b=$(basename "$1" .tar.bz2)
-        bsdtar xjf "$1" && [[ -d "$b" ]] && cd "$b" || return 0 ;;
+        tar xjf "$1" && [[ -d "$b" ]] && cd "$b" || return 0 ;;
       *.bz2)
         b=$(basename "$1" .bz2)
         bunzip2 "$1" && [[ -d "$b" ]] && cd "$b" || return 0 ;;
       *.tar.gz)
         b=$(basename "$1" .tar.gz)
-        bsdtar xzf "$1" && [[ -d "$b" ]] && cd "$b" || return 0 ;;
+        tar xzf "$1" && [[ -d "$b" ]] && cd "$b" || return 0 ;;
       *.gz)
         b=$(basename "$1" .gz)
         gunzip "$1" && [[ -d "$b" ]] && cd "$b" || return 0 ;;
       *.tar.xz)
         b=$(basename "$1" .tar.xz)
-        bsdtar Jxf "$1" && [[ -d "$b" ]] && cd "$b" || return 0 ;;
+        tar Jxf "$1" && [[ -d "$b" ]] && cd "$b" || return 0 ;;
       *.xz)
         b=$(basename "$1" .gz)
         xz -d "$1" && [[ -d "$b" ]] && cd "$b" || return 0 ;;
@@ -31,13 +31,13 @@ x() {
         unrar e "$1" && [[ -d "$b" ]] && cd "$b" || return 0 ;;
       *.tar)
         b=$(basename "$1" .tar)
-        bsdtar xf "$1" && [[ -d "$b" ]] && cd "$b" || return 0 ;;
+        tar xf "$1" && [[ -d "$b" ]] && cd "$b" || return 0 ;;
       *.tbz2)
         b=$(basename "$1" .tbz2)
-        bsdtar xjf "$1" && [[ -d "$b" ]] && cd "$b" || return 0 ;;
+        tar xjf "$1" && [[ -d "$b" ]] && cd "$b" || return 0 ;;
       *.tgz)
         b=$(basename "$1" .tgz)
-        bsdtar xzf "$1" && [[ -d "$b" ]] && cd "$b" || return 0 ;;
+        tar xzf "$1" && [[ -d "$b" ]] && cd "$b" || return 0 ;;
       *.zip)
         b=$(basename "$1" .zip)
         unzip "$1" && [[ -d "$b" ]] && cd "$b" || return 0 ;;
