@@ -23,7 +23,7 @@ export TERM=xterm-256color
 SAVEHIST=100000
 
 # Global Settings
-export LANGUAGE = "en_AU:en"
+# export LANGUAGE = "en_AU:en"
 export LANG=en_AU.UTF-8
 export LC_ALL=en_AU.UTF-8
 export EDITOR=vim
