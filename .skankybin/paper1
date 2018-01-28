@@ -1,6 +1,0 @@
-#!/usr/bin/env zsh
-
-NOTESDIR="~/Dropbox/Notes"
-PAPERDIR="~/Dropbox/PhD-Current/ATC-Paper1"
-
-atom $NOTESDIR $PAPERDIR
