@@ -1,15 +1,5 @@
 ;; Org Directory
-(global-set-key (kbd "C-x M-1") (lambda() (interactive)(find-file "~/Dropbox/org/")))
 
-;; Inline code evaluation
-(setq org-confirm-babel-evaluate nil)
-(require 'ob-python)
-(require 'ob-R)
-
-(org-babel-do-load-languages
-  'org-babel-load-languages
-  '((python . t)
-    (R . t)))
 
 ;; Org Configuration
 (with-eval-after-load 'org
@@ -18,6 +8,17 @@
         '(("c" "Simple agenda view"
            ((agenda "")
             (alltodo "")))))
+
+
+  ;; Inline code evaluation
+  ;; (setq org-confirm-babel-evaluate nil)
+  ;; (require 'ob-python)
+  ;; (require 'ob-R)
+  ;; (org-babel-do-load-languages
+  ;;  'org-babel-load-languages
+  ;;  '((python . t)
+  ;;    (R . t)))
+
 
   (setq org-publish-project-alist
       '(("org"
@@ -65,6 +66,6 @@
           ("j" "Journal" entry (file+datetree "~/Dropbox/org/diary.org")
            "* %?\nEntered on %U\n  %i\n")))
   (setq org-todo-keywords
-        '((sequence "TODO" "WAITING" "|" "DONE" "HOLD" "CANCELLED")))
+        '((sequence "TODO" "|" "DONE" "REMEMBER" "CANCELLED")))
 
   )

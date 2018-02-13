@@ -1,7 +1,15 @@
+;; (setq cua-mode nil)
+
+
 ;; Text Editing and Selection Configuration
 (delete-selection-mode 1)
 (setq-default fill-column 120)
-;; (setq cua-mode nil)
+(setq mouse-yank-at-point nil) ;; Fixes bug associated with middle click paste for spell check
+
+(setq-default
+ isearch-allow-scroll t                 ; Allow scrolling in an isearch session
+ lazy-highlight-cleanup nil             ; Leave highlights after an isearch session
+ lazy-highlight-initial-delay 0)        ; Start highlighting immediately
 
 ;;; Buffer Display Configuration
 (setq powerline-default-separator 'utf-8)
@@ -30,7 +38,6 @@
  backup-inhibited t
  create-lockfiles nil)
 
-
 ;; Allow 20MB of memory (instead of 0.76MB default) before calling
 ;; garbage collection. This means GC runs less often, which speeds
 ;; up some operations
@@ -40,15 +47,9 @@
 ;; & deletes one. This sets backspace to delete 1 character instead of 1 column.
 (global-set-key (kbd "DEL") 'backward-delete-char)
 
-
 ;; Search settings
 (define-key global-map [remap isearch-forward] 'isearch-forward-regexp)
 (define-key global-map [remap isearch-backward] 'isearch-backward-regexp)
-(setq-default
- isearch-allow-scroll t                 ; Allow scrolling in an isearch session
- lazy-highlight-cleanup nil             ; Leave highlights after an isearch session
- lazy-highlight-initial-delay 0)        ; Start highlighting immediately
-
 
 ;; M-up and M-down move lines
 (defun move-line (n)
