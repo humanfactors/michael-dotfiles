@@ -13,6 +13,7 @@ plugins=(git zsh-autosuggestions colored-man golang zsh-syntax-highlighting colo
 
 # User configuration
 source $ZSH/oh-my-zsh.sh
+source $HOME/bin/emacs-helpers
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOROOT/bin:$GOPATH/bin:$HOME/bin
 

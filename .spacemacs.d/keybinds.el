@@ -9,6 +9,12 @@
   (interactive)
   (end-of-line)
   (newline-and-indent))
+(global-set-key (kbd "<S-return>") 'end-of-line-and-indented-new-line)
+
+  ;; vi-like line insertion
+(define-key evil-emacs-state-map (kbd "C-o") (lambda () (interactive)(beginning-of-line)(open-line 1)))
+(define-key evil-emacs-state-map (kbd "M-o") (lambda () (interactive)(end-of-line)(newline)))
+
 
 ;; Neotree Quicklook Binds
 (with-eval-after-load 'neotree
@@ -31,14 +37,7 @@
 (global-set-key "\C-x\M-d" `insert-current-datetime)
 (global-set-key [f8] 'neotree-toggle)
 (global-set-key [f5] 'deft)
-
-(spacemacs/set-leader-keys "oit" 'insert-current-datetime)
-
-;; vi-like line insertion
-(global-set-key (kbd "<S-return>") 'end-of-line-and-indented-new-line)
-(define-key evil-emacs-state-map (kbd "C-o") (lambda () (interactive)(beginning-of-line)(open-line 1)))
-(define-key evil-emacs-state-map (kbd "M-o") (lambda () (interactive)(end-of-line)(newline)))
-
+  
 ;;; Evil Mode Visual Line Interaction Mode
 ;; Make horizontal movement cross lines
 (setq evil-cross-lines t)
@@ -56,5 +55,8 @@
 ;; (spacemacs/set-leader-keys "ocp" (lambda () (interactive) (find-file "~/Dropbox/org/phd-notes.org")))
 ;; (spacemacs/set-leader-keys "ocf" (lambda () (interactive) (find-file "~/Dropbox/org/freelance.org")))
 ;; (spacemacs/set-leader-keys "oct" (lambda () (interactive) (find-file "~/Dropbox/org/TODOs.org")))
-;; (global-set-key (kbd "C-x M-1") (lambda() (interactive)(find-file "~/Dropbox/org/")))
 ;; (define-key global-map [?\s-d] (lambda() (interactive)(find-file "~/.spacemacs-user-config.el")))
+
+(global-set-key (kbd "C-x M-1") (lambda() (interactive)(find-file "~/Dropbox/org/")))
+(global-set-key (kbd "C-x M-2") (lambda() (interactive)(find-file "~/humanfactors/michael-blog/")))
+(global-set-key (kbd "C-x M-3") (lambda() (interactive)(find-file "~/Code/")))
