@@ -7,7 +7,7 @@
 (setq powerline-default-separator 'utf-8)
 (setq word-wrap 1)
 (global-visual-line-mode t)
-
+(setq auto-fill-mode 1)
 ;;; GUI Configuration
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
 (menu-bar-mode 1)
@@ -46,7 +46,7 @@
 (define-key global-map [remap isearch-backward] 'isearch-backward-regexp)
 (setq-default
  isearch-allow-scroll t                 ; Allow scrolling in an isearch session
- lazy-highlight-cleanup nil             ; Leave highlights after an isearch session
+ lazy-highlight-cleanup t               ; Leave highlights after an isearch session
  lazy-highlight-initial-delay 0)        ; Start highlighting immediately
 
 

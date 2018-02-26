@@ -15,7 +15,7 @@ plugins=(git zsh-autosuggestions colored-man golang zsh-syntax-highlighting colo
 source $ZSH/oh-my-zsh.sh
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOROOT/bin:$GOPATH/bin:$HOME/bin
-
+source ~/bin/emacs-helpers
 # -------- END OF OHMYZSH CONFIG --------
 
 # Set overall configuration

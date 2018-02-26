@@ -18,26 +18,26 @@
 ;;; BINDINGS
 (define-key global-map (kbd "s-=") 'text-scale-increase)
 (define-key global-map (kbd "s--") 'text-scale-decrease)
-
 (global-set-key (kbd "s-n") 'new-frame)
 (global-set-key (kbd "C-z") 'undo)
 (global-set-key (kbd "M-<backspace>") 'backward-kill-word)
 (global-set-key (kbd "s-z") 'undo)
 (global-set-key (kbd "s-Z") 'undo-tree-redo)
-(global-set-key (kbd "M-<prior>") `previous-buffer)
+(global-set-key (kbd "M-<prior>") `bury-buffer)
 (global-set-key (kbd "M-<next>") `next-buffer)
 (global-set-key (kbd "s-<prior>") `previous-buffer)
 (global-set-key (kbd "s-<next>") `next-buffer)
 (global-set-key "\C-x\M-d" `insert-current-datetime)
 (global-set-key [f8] 'neotree-toggle)
 (global-set-key [f5] 'deft)
-
+(global-set-key [f6] 'set-mark-command)
 (spacemacs/set-leader-keys "oit" 'insert-current-datetime)
 
 ;; vi-like line insertion
 (global-set-key (kbd "<S-return>") 'end-of-line-and-indented-new-line)
 (define-key evil-emacs-state-map (kbd "C-o") (lambda () (interactive)(beginning-of-line)(open-line 1)))
 (define-key evil-emacs-state-map (kbd "M-o") (lambda () (interactive)(end-of-line)(newline)))
+(global-set-key [f9]  'ispell-word )
 
 ;;; Evil Mode Visual Line Interaction Mode
 ;; Make horizontal movement cross lines

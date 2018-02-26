@@ -1,24 +1,24 @@
 ;; Org Directory
 (global-set-key (kbd "C-x M-1") (lambda() (interactive)(find-file "~/Dropbox/org/")))
 
-;; Inline code evaluation
-(setq org-confirm-babel-evaluate nil)
-(require 'ob-python)
-(require 'ob-R)
-
-(org-babel-do-load-languages
-  'org-babel-load-languages
-  '((python . t)
-    (R . t)))
-
-;; Org Configuration
 (with-eval-after-load 'org
+;; Inline code evaluation
+  (setq org-confirm-babel-evaluate nil)
+  (require 'ob-python)
+  (require 'ob-R)
+
+  (org-babel-do-load-languages
+   'org-babel-load-languages
+   '((python . t)
+     (R . t)))
+  
+  ;; Org Configuration
   (setq org-agenda-files '("~/Dropbox/org/"))
   (setq org-agenda-custom-commands
         '(("c" "Simple agenda view"
            ((agenda "")
             (alltodo "")))))
-
+  
   (setq org-publish-project-alist
       '(("org"
         :base-directory "~/Dropbox/org/"
