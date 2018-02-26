@@ -15,6 +15,7 @@
 (setq markdown-list-indent-width 4)
 
 ;; Deft (nv) config
-(setq deft-extensions '("md" "tex" "org" "txt"))
+(setq deft-extensions '("org" "md" "tex" "txt"))
 (setq deft-directory "~/Dropbox/Notes")
-(setq deft-text-mode 'markdown-mode)
+(setq deft-text-mode 'org-mode)
+(setq deft-use-filename-as-title t)

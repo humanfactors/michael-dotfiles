@@ -29,7 +29,6 @@ export LANG=en_AU.UTF-8
 export LC_ALL=en_AU.UTF-8
 export EDITOR=vim
 export NOTES_DIR="$HOME/Dropbox/Notes"
-
 export ARCHFLAGS="-arch x86_64"
 alias say="espeak"
 

@@ -5,10 +5,11 @@
 (delete-selection-mode 1)
 (setq-default fill-column 120)
 (setq mouse-yank-at-point nil) ;; Fixes bug associated with middle click paste for spell check
+(setq auto-fill-mode 1)
 
 (setq-default
  isearch-allow-scroll t                 ; Allow scrolling in an isearch session
- lazy-highlight-cleanup nil             ; Leave highlights after an isearch session
+ lazy-highlight-cleanup t             ; Leave highlights after an isearch session
  lazy-highlight-initial-delay 0)        ; Start highlighting immediately
 
 ;;; Buffer Display Configuration

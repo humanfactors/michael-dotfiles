@@ -37,7 +37,9 @@
 (global-set-key "\C-x\M-d" `insert-current-datetime)
 (global-set-key [f8] 'neotree-toggle)
 (global-set-key [f5] 'deft)
-  
+(global-set-key [f6] 'set-mark-command)
+(global-set-key [f9]  'ispell-word)
+
 ;;; Evil Mode Visual Line Interaction Mode
 ;; Make horizontal movement cross lines
 (setq evil-cross-lines t)
