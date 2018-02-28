@@ -23,6 +23,10 @@ export PATH=$PATH:$GOROOT/bin:$GOPATH/bin:$HOME/bin
 export TERM=xterm-256color
 SAVEHIST=100000
 
+# Editor Configuration
+export VISUAL=emacsclient
+export EDITOR="$VISUAL"
+
 # Global Settings
 # export LANGUAGE = "en_AU:en"
 export LANG=en_AU.UTF-8
