@@ -38,7 +38,7 @@
   (org-defkey org-mode-map [(meta return)] 'org-meta-return)
 
   ;; Org Mode
-  (setf org-blank-before-new-entry '((heading . nil) (plain-list-item . nil)))
+  (setf org-blank-before-new-entry '((heading . auto) (plain-list-item . nil)))
   (setq org-hierarchical-todo-statistics nil)
   (setq org-bullets-mode nil)
   (setq org-support-shift-select t)
