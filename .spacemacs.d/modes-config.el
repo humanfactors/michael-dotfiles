@@ -19,3 +19,14 @@
 (setq deft-directory "~/Dropbox/Notes")
 (setq deft-text-mode 'org-mode)
 (setq deft-use-filename-as-title t)
+
+(with-eval-after-load 'auctex
+  (append-to-list
+   'org-latex-classes
+   '(("tufte-book"
+      "\\documentclass[a4paper, sfsidenotes, justified, notitlepage]{tufte-book}
+     \\input{/full/path/to/.templates/tufte-book.tex}"
+      ("\\part{%s}" . "\\part*{%s}")
+      ("\\chapter{%s}" . "\\chapter*{%s}")
+      ("\\section{%s}" . "\\section*{%s}")
+      ("\\subsection{%s}" . "\\subsection*{%s}")))))
