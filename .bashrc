@@ -15,6 +15,8 @@ PS1='[\u@\h \W]\$ '
 
 alias py='python3'
 
+source $HOME/bin/emacs-helpers
+
 export LANG=en_US.UTF-8
 SAVEHIST=100000
 export NOTES_DIR="$HOME/Dropbox/Notes"
