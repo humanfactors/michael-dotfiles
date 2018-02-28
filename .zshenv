@@ -24,7 +24,7 @@ export TERM=xterm-256color
 SAVEHIST=100000
 
 # Editor Configuration
-export VISUAL=emacsclient
+export VISUAL="emacsclient -a 'vim'"
 export EDITOR="$VISUAL"
 
 # Global Settings
