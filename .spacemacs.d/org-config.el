@@ -3,11 +3,11 @@
 
 ;; Org Configuration
 (with-eval-after-load 'org
-  (setq org-agenda-files '("~/Dropbox/org/"))
-  (setq org-agenda-custom-commands
-        '(("c" "Simple agenda view"
-           ((agenda "")
-            (alltodo "")))))
+  ;; (setq org-agenda-files '("~/Dropbox/org/"))
+  ;; (setq org-agenda-custom-commands
+        ;; '(("c" "Simple agenda view"
+           ;; ((agenda "")
+            ;; (alltodo "")))))
 
 
   ;; Inline code evaluation
