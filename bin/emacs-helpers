@@ -16,7 +16,7 @@ et() {
 em() {
     emacsclient -n -e "(if (> (length (frame-list)) 1) ‘t)" 2> /dev/null | grep t &> /dev/null
     if [ $# -ne 0 ]; then
-    emacsclient -nw "$@"
+    emacsclient -a '' -c "$@"
     elif [ -n "$DISPLAY" ]; then
     emacsclient -c -n
     else

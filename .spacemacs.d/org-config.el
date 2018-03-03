@@ -11,13 +11,10 @@
 
 
   ;; Inline code evaluation
-  ;; (setq org-confirm-babel-evaluate nil)
-  ;; (require 'ob-python)
-  ;; (require 'ob-R)
-  ;; (org-babel-do-load-languages
-  ;;  'org-babel-load-languages
-  ;;  '((python . t)
-  ;;    (R . t)))
+  (setq org-confirm-babel-evaluate nil)
+  (org-babel-do-load-languages
+   'org-babel-load-languages
+   '((R . t)))
 
 
   (setq org-publish-project-alist

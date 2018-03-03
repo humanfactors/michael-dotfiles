@@ -1,5 +1,9 @@
 ;;; FUNCTIONS USED FOR BINDINGS
 
+;; Critical Usability Functions
+(global-set-key (kbd "C-SPC C-SPC") 'set-mark-command)
+(global-set-key (kbd "C-SPC SPC") 'helm-M-x)
+
 ;; Insert Data time into Spacemacs Keyboard shortcut
 (defun insert-current-datetime () (interactive)
        (insert (shell-command-to-string "echo -n $(date '+%A (%B %d) @ %H:%m')")))
@@ -37,7 +41,8 @@
 (global-set-key "\C-x\M-d" `insert-current-datetime)
 (global-set-key [f8] 'neotree-toggle)
 (global-set-key [f5] 'deft)
-(global-set-key [f6] 'set-mark-command)
+
+
 (global-set-key [f9]  'ispell-word)
 
 ;;; Evil Mode Visual Line Interaction Mode
