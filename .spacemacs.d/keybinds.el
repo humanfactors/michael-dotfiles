@@ -67,3 +67,4 @@
 (global-set-key (kbd "C-x M-1") (lambda() (interactive)(find-file "~/Dropbox/org/")))
 (global-set-key (kbd "C-x M-2") (lambda() (interactive)(find-file "~/humanfactors/michael-blog/")))
 (global-set-key (kbd "C-x M-3") (lambda() (interactive)(find-file "~/Code/")))
+(global-set-key (kbd "C-x M-4") (lambda() (interactive)(dired "~/.spacemacs.d/")))
