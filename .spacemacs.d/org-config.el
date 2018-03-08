@@ -64,5 +64,4 @@
            "* %?\nEntered on %U\n  %i\n")))
   (setq org-todo-keywords
         '((sequence "TODO" "REMEMBER" "|" "DONE" "CANCELLED")))
-
   )
