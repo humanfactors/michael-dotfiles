@@ -1,8 +1,9 @@
 ;;; FUNCTIONS USED FOR BINDINGS
 
-;; Critical Usability Functions
+;; Critical Spacemacs Related Functions
 (global-set-key (kbd "C-SPC C-SPC") 'set-mark-command)
 (global-set-key (kbd "C-SPC SPC") 'helm-M-x)
+(global-set-key (kbd "C-x k") 'spacemacs/kill-this-buffer)
 
 ;; Insert Data time into Spacemacs Keyboard shortcut
 (defun insert-current-datetime () (interactive)
