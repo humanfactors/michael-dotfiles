@@ -4,7 +4,7 @@
 (global-set-key (kbd "C-SPC C-SPC") 'set-mark-command)
 (global-set-key (kbd "C-SPC SPC") 'helm-M-x)
 (global-set-key (kbd "C-x k") 'spacemacs/kill-this-buffer)
-
+(global-set-key [f12] 'magit)
 ;; Insert Data time into Spacemacs Keyboard shortcut
 (defun insert-current-datetime () (interactive)
        (insert (shell-command-to-string "echo -n $(date '+%A (%B %d) @ %H:%m')")))
