@@ -33,29 +33,31 @@ This function should only modify configuration layer settings."
 
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
-   '(csv
-     go
-     ;; javascript
-     ;; html
-     ;; csv
-     ;; yaml
-     ;; octave
-     python
-     spell-checking
+   '(go
+     ;; ----------------------------------------------------------------
+     ;; Example of useful layers you may want to use right away.
+     ;; Uncomment some layer names and press `SPC f e R' (Vim style) or
+     ;; `M-m f e R' (Emacs style) to install them.
+     ;; ----------------------------------------------------------------
      helm
      colors
      deft
+     latex
      auto-completion
      better-defaults
      emacs-lisp
      ess
+     emoji
      pandoc
      git
      markdown
      org
+     octave
+     ;; common-lisp
      ;; syntax-checking
      ;; version-control
      )
+
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages, then consider creating a layer. You can also put the
@@ -64,8 +66,10 @@ This function should only modify configuration layer settings."
    ;; '(your-package :location "~/path/to/your-package/")
    ;; Also include the dependencies as they will not be resolved automatically.
    dotspacemacs-additional-packages '()
+
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
+
    ;; A list of packages that will not be installed and loaded.
    dotspacemacs-excluded-packages '(org-bullets)
    ;; Defines the behaviour of Spacemacs when installing packages.
@@ -147,7 +151,8 @@ It should only modify the values of Spacemacs settings."
    ;; `recents' `bookmarks' `projects' `agenda' `todos'.
    ;; List sizes may be nil, in which case
    ;; `spacemacs-buffer-startup-lists-length' takes effect.
-   dotspacemacs-startup-lists '((recents . 5)
+   dotspacemacs-startup-lists '((recents . 20)
+                                (todos . 15)
                                 (projects . 7))
    ;; True if the home buffer should respond to resize events. (default t)
    dotspacemacs-startup-buffer-responsive t
@@ -199,7 +204,6 @@ It should only modify the values of Spacemacs settings."
    ;; The leader key accessible in `emacs state' and `insert state'
    ;; (default "M-m")
    dotspacemacs-emacs-leader-key "C-SPC"
-
    ;; Major mode leader key is a shortcut key which is the equivalent of
    ;; pressing `<leader> m`. Set it to `nil` to disable it. (default ",")
    dotspacemacs-major-mode-leader-key ","
@@ -207,7 +211,6 @@ It should only modify the values of Spacemacs settings."
    ;; Major mode leader key accessible in `emacs state' and `insert state'.
    ;; (default "C-M-m")
    dotspacemacs-major-mode-emacs-leader-key "M-m"
-
    ;; These variables control whether separate commands are bound in the GUI to
    ;; the key pairs `C-i', `TAB' and `C-m', `RET'.
    ;; Setting it to a non-nil value, allows for separate commands under `C-i'
@@ -314,7 +317,8 @@ It should only modify the values of Spacemacs settings."
    ;; If non-nil the frame is maximized when Emacs starts up.
    ;; Takes effect only if `dotspacemacs-fullscreen-at-startup' is nil.
    ;; (default nil) (Emacs 24.4+ only)
-   dotspacemacs-maximized-at-startup t
+   dotspacemacs-maximized-at-startup nil
+
    ;; A value from the range (0..100), in increasing opacity, which describes
    ;; the transparency level of a frame when it's active or selected.
    ;; Transparency can be toggled through `toggle-transparency'. (default 90)
@@ -429,6 +433,7 @@ This function is called immediately after `dotspacemacs/init', before layer
 configuration.
 It is mostly for variables that should be set before packages are loaded.
 If you are unsure, try setting them in `dotspacemacs/user-config' first."
+  (setq warning-minimum-level :emergency)
   )
 
 (defun dotspacemacs/user-config ()
@@ -461,7 +466,7 @@ This function is called at the very end of Spacemacs initialization."
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (pipenv pandoc-mode ox-pandoc helm-xref yasnippet-snippets yapfify ws-butler winum which-key web-mode volatile-highlights vi-tilde-fringe uuidgen use-package unfill toc-org tagedit symon string-inflection spaceline-all-the-icons smeargle slim-mode scss-mode sass-mode restart-emacs rainbow-mode rainbow-identifiers rainbow-delimiters pyvenv pytest pyenv-mode py-isort pug-mode popwin pippel pip-requirements persp-mode pcre2el password-generator paradox overseer orgit org-projectile org-present org-pomodoro org-mime org-download org-brain open-junk-file neotree nameless mwim move-text mmm-mode markdown-toc magit-gitflow macrostep lorem-ipsum live-py-mode linum-relative link-hint less-css-mode indent-guide importmagic impatient-mode hy-mode hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation helm-themes helm-swoop helm-pydoc helm-purpose helm-projectile helm-mode-manager helm-make helm-gitignore helm-flx helm-descbinds helm-css-scss helm-company helm-c-yasnippet helm-ag google-translate golden-ratio godoctor go-tag go-rename go-guru go-eldoc gnuplot gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link gh-md fuzzy font-lock+ flyspell-correct-helm flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-org evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-cleverparens evil-args evil-anzu eval-sexp-fu ess-R-data-view emojify emoji-cheat-sheet-plus emmet-mode elisp-slime-nav editorconfig dumb-jump diminish deft define-word cython-mode csv-mode counsel-projectile company-web company-statistics company-go company-emoji company-anaconda column-enforce-mode color-identifiers-mode clean-aindent-mode centered-cursor-mode auto-yasnippet auto-highlight-symbol auto-dictionary auto-compile aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line ac-ispell))))
+    (godoctor go-tag go-rename go-guru go-eldoc company-go yasnippet-snippets ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package unfill toc-org symon string-inflection spaceline-all-the-icons smeargle restart-emacs rainbow-mode rainbow-identifiers rainbow-delimiters popwin persp-mode pcre2el password-generator paradox pandoc-mode ox-pandoc overseer orgit org-projectile org-present org-pomodoro org-mime org-download org-brain open-junk-file neotree nameless mwim move-text mmm-mode markdown-toc magit-gitflow macrostep lorem-ipsum linum-relative link-hint indent-guide hungry-delete htmlize hl-todo highlight-parentheses highlight-numbers highlight-indentation helm-xref helm-themes helm-swoop helm-purpose helm-projectile helm-mode-manager helm-make helm-gitignore helm-flx helm-descbinds helm-company helm-c-yasnippet helm-ag google-translate golden-ratio go-mode gnuplot gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link gh-md fuzzy font-lock+ flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-org evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-cleverparens evil-args evil-anzu eval-sexp-fu ess-R-data-view emojify emoji-cheat-sheet-plus elisp-slime-nav editorconfig dumb-jump diminish deft define-word counsel-projectile company-statistics company-emoji company-auctex column-enforce-mode color-identifiers-mode clean-aindent-mode centered-cursor-mode auto-yasnippet auto-highlight-symbol auto-compile aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line ac-ispell))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

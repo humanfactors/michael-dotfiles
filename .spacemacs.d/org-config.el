@@ -3,11 +3,11 @@
 
 ;; Org Configuration
 (with-eval-after-load 'org
-  (setq org-agenda-files '("~/Dropbox/org/"))
-  (setq org-agenda-custom-commands
-        '(("c" "Simple agenda view"
-           ((agenda "")
-            (alltodo "")))))
+  ;; (setq org-agenda-files '("~/Dropbox/org/"))
+  ;; (setq org-agenda-custom-commands
+        ;; '(("c" "Simple agenda view"
+           ;; ((agenda "")
+            ;; (alltodo "")))))
 
 
   ;; Inline code evaluation
@@ -36,7 +36,7 @@
 
   ;; Org Mode
   (setf org-blank-before-new-entry '((heading . auto) (plain-list-item . nil)))
-  (setq org-hierarchical-todo-statistics nil)
+  (setq org-hierarchical-todo-statistics t)
   (setq org-bullets-mode nil)
   (setq org-support-shift-select t)
 
@@ -63,6 +63,5 @@
           ("j" "Journal" entry (file+datetree "~/Dropbox/org/diary.org")
            "* %?\nEntered on %U\n  %i\n")))
   (setq org-todo-keywords
-        '((sequence "TODO" "|" "DONE" "REMEMBER" "CANCELLED")))
-
+        '((sequence "TODO" "REMEMBER" "|" "DONE" "CANCELLED")))
   )
