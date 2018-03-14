@@ -17,6 +17,11 @@
    '((R . t)))
 
 
+  (setq org-agenda-files (list "~/Dropbox/org/TODOs.org"
+                               "~/Dropbox/org/meetings.org" 
+                               "~/Dropbox/org/dstg.org" 
+                               "~/Dropbox/org/research.org"))
+
   (setq org-publish-project-alist
       '(("org"
         :base-directory "~/Dropbox/org/"
