@@ -11,10 +11,10 @@
 
 
   ;; Inline code evaluation
-  (setq org-confirm-babel-evaluate nil)
-  (org-babel-do-load-languages
-   'org-babel-load-languages
-   '((R . t)))
+  ;; (setq org-confirm-babel-evaluate nil)
+  ;; (org-babel-do-load-languages
+  ;;  'org-babel-load-languages
+  ;;  '((R . t)))
 
 
   (setq org-agenda-files (list "~/Dropbox/org/TODOs.org"
