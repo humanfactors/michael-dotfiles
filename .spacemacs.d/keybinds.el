@@ -73,3 +73,4 @@
 (global-set-key (kbd "C-x M-2") (lambda() (interactive)(find-file "~/humanfactors/michael-blog/")))
 (global-set-key (kbd "C-x M-3") (lambda() (interactive)(find-file "~/Code/")))
 (global-set-key (kbd "C-x M-4") (lambda() (interactive)(dired "~/.spacemacs.d/")))
+(global-set-key (kbd "C-x M-5") (lambda() (interactive)(dired "~/PhD/atc-interruptions-derde-main")))

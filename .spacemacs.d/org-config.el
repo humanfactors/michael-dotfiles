@@ -11,11 +11,16 @@
 
 
   ;; Inline code evaluation
-  (setq org-confirm-babel-evaluate nil)
-  (org-babel-do-load-languages
-   'org-babel-load-languages
-   '((R . t)))
+  ;; (setq org-confirm-babel-evaluate nil)
+  ;; (org-babel-do-load-languages
+  ;;  'org-babel-load-languages
+  ;;  '((R . t)))
 
+
+  (setq org-agenda-files (list "~/Dropbox/org/TODOs.org"
+                               "~/Dropbox/org/meetings.org" 
+                               "~/Dropbox/org/dstg.org" 
+                               "~/Dropbox/org/research.org"))
 
   (setq org-publish-project-alist
       '(("org"
