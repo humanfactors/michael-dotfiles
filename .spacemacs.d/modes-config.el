@@ -1,5 +1,6 @@
 ;; Python
 (setq python-shell-interpreter "python3")
+(setq python-shell-interpreter-args "")
 (setq python-tab-width 4)
 
 ;; Shell Config
