@@ -1,0 +1,30 @@
+{
+    "editor.fontFamily": "Fira Code",
+    "editor.fontSize": 16,
+    "workbench.colorTheme": "Spacemacs - dark",
+    "workbench.iconTheme": "vscode-great-icons",
+    "editor.renderWhitespace": "none",
+    "window.zoomLevel": 1,
+    "python.pythonPath": "/usr/bin/python3",
+    "r.lintr.enabled": false,
+    "explorer.confirmDragAndDrop": false,
+    "editor.minimap.enabled": false,
+    "editor.fontLigatures": true,
+    "files.associations": {
+        "*.el": "lisp"
+    },
+    "gitlens.keymap": "alternate",
+    "jupyter.languages": [
+        {
+            "languageId": "python3",
+            "startupCode": [
+                "%matplotlib inline"
+            ],
+            "cellIdentificationPattern": "^(#\\s*%%|#\\s*\\<codecell\\>|#\\s*In\\[\\d*?\\]|#\\s*In\\[ \\])(.*)"
+        },
+        {
+            "languageId": "javascript",
+            "cellIdentificationPattern": "^(\\/\\/ %%|\\/\\/%%|\\/\\/ \\<codecell\\>|\\/\\/ In\\[\\d*?\\]|\\/\\/ In\\[ \\])(.*)"
+        }
+    ]
+}

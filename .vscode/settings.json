@@ -1,0 +1,58 @@
+{
+    "editor.fontSize": 14,
+    "terminal.integrated.shell.windows": "C:\\WINDOWS\\sysnative\\cmd.exe",
+    "terminal.integrated.shellArgs.windows": [
+        "/k",
+        "C:\\Code\\cmder\\vscode.bat",
+    ],
+    "window.zoomLevel": 2,
+    "workbench.iconTheme": "vscode-icons",
+    "editor.fontFamily": "Fira Code",
+    "vim.disableAnnoyingNeovimMessage": true,
+    "workbench.colorTheme": "Ayu Mirage",
+    "files.associations": {
+        "*.el": "lisp"
+    },
+    "cSpell.enabledLanguageIds": [
+        "c",
+        "cpp",
+        "csharp",
+        "go",
+        "handlebars",
+        "javascript",
+        "javascriptreact",
+        "json",
+        "latex",
+        "markdown",
+        "php",
+        "plaintext",
+        "python",
+        "restructuredtext",
+        "text",
+        "typescript",
+        "typescriptreact",
+        "yml"
+    ],
+    "cSpell.language": ",en",
+    "editor.wordWrap": "on",
+    "workbench.panel.location": "bottom",
+    "editor.minimap.enabled": false,
+    "pasteImage.path": "./images",
+    "explorer.confirmDragAndDrop": false,
+    "explorer.confirmDelete": false,
+    "editor.renderWhitespace": "none",
+    "r.lintr.enabled": false,
+    "r.lintr.cache": false,
+    "files.eol": "\n",
+    "files.insertFinalNewline": true,
+    "r.rterm.windows": "C:\\Program Files\\R\\R-3.4.3\\bin\\x64\\R.exe",
+    "editor.fontLigatures": true,
+    "[r]": {
+        "editor.wordSeparators": "`~!@#$%^&*()-=+[{]}\\|;:'\",<>/?"
+    },
+    "org.todoKeywords": [
+        "TODO",
+        "REMEMBER",
+        "DONE"
+    ]
+}

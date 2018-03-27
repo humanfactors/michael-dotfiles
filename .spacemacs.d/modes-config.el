@@ -14,6 +14,9 @@
 (setq markdown-asymmetric-header t)
 (setq markdown-list-indent-width 4)
 
+(add-hook 'markdown-mode (lambda ()
+                           (push '(?< . ("< " . " >")) evil-surround-pairs-alist)))
+
 ;; Deft (nv) config
 (setq deft-extensions '("org" "md" "tex" "txt"))
 (setq deft-directory "~/Dropbox/Notes")

@@ -36,6 +36,13 @@ export NOTES_DIR="$HOME/Dropbox/Notes"
 export ARCHFLAGS="-arch x86_64"
 alias say="espeak"
 
+# Settings for Spaceship
+SPACESHIP_PROMPT_ADD_NEWLINE=false
+SPACESHIP_DIR_TRUNC=4
+SPACESHIP_BATTERY_THRESHOLD=50
+SPACESHIP_TIME_SHOW=true
+SPACESHIP_DIR_PREFIX='| '
+
 
 # # Functions and Paths
 # source "${HOME}/.skankybin/music.sh"

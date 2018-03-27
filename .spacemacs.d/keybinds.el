@@ -1,5 +1,9 @@
 ;;; FUNCTIONS USED FOR BINDINGS
 
+;; Experimental
+
+
+
 ;; Critical Spacemacs Related Functions
 (global-set-key (kbd "C-SPC C-SPC") 'set-mark-command)
 (global-set-key (kbd "C-SPC SPC") 'helm-M-x)
