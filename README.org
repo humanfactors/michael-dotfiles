@@ -150,3 +150,22 @@ This contains almost all of my major tweaks to Spacemacs/Emacs. Some of these ar
 
 #+END_SRC
 
+
+** Tmux
+
+I use [Ted Sluis's](https://github.com/tedsluis/tmux.conf) tmux configuration which provides an excellent out of the box experience. I've enabled mouse support.
+
+*** Added features (compared to default tmux)
+- Use prefix \<ctrl\>-\<a\> instead of the default \<ctrl\>-\<b\> prefix.  
+- Use \<shift\>-\<left arrow> and \<shift\>-\<right arrow\> to switch between windows.  
+- Use prefix 'r' to reload your ~/.tmux.conf file.   
+- Use prefix '|' to split panes horizonal.   
+- Use prefix '-' to split panes vertical.  
+- Use \<alt\>-\<left arrow\> and \<alt\>-\<right arrow\> to switch horizonal between planes.  
+- Use \<alt\>-\<arrow up\> and \<alt\>-\<arrow down\> to switch vertical between planes.  
+- Use F2 for help (press 'q' to return).
+- Use F3 for a list of hot-keys (press 'q' to return).
+
+[[file:https:/raw.githubusercontent.com/tedsluis/tmux.conf/master/tmux_screenshot.gif]]
+
+
