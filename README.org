@@ -1,0 +1,20 @@
+* Michael's Dotfiles
+
+Very opinionated and quite customised dotfiles. Includes customisation and centered around:
+
+- Spacemacs/Emacs
+- oh-my-zsh
+- Gnome
+- tmux
+- Linux utilities
+
+** Spacemacs Configuration
+[[file:docs/spacemacs-editing-style-hybrid.png]]
+My spacemacs configuration is broken down into several modules which are loaded in my Spacemacs =init.el=. Most of the functionality from these can be loaded directly into a standard Emacs 25 install - though this does require some manual steps. 
+
+#+BEGIN_SRC emacs-lisp
+  (if (file-readable-p "~/.spacemacs.d/gui-interaction.el") (load "~/.spacemacs.d/gui-interaction.el"))
+  (if (file-readable-p "~/.spacemacs.d/keybinds.el") (load "~/.spacemacs.d/keybinds.el"))
+  (if (file-readable-p "~/.spacemacs.d/modes-config.el") (load "~/.spacemacs.d/modes-config.el"))
+  (if (file-readable-p "~/.spacemacs.d/org-config.el") (load "~/.spacemacs.d/org-config.el"))
+#+END_SRC
