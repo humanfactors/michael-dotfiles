@@ -42,3 +42,7 @@
 ;; Fix inline codeblocks being split in markdown mode in Rmarkdown documents when filling
 (add-hook 'fill-nobreak-predicate
 #'markdown-inline-code-at-point-p)
+
+
+;; Default to insert git commit
+(add-hook 'git-commit-mode-hook 'evil-insert-state)
