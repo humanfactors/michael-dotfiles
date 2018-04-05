@@ -26,6 +26,7 @@
 
 
 
+
 ;; Neotree Quicklook Binds
 (with-eval-after-load 'neotree
   (evil-define-key 'evilified neotree-mode-map (kbd "RET") 'neotree-quick-look)

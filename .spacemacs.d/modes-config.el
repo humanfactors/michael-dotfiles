@@ -35,8 +35,10 @@
       ("\\section{%s}" . "\\section*{%s}")
       ("\\subsection{%s}" . "\\subsection*{%s}")))))
 
+;; Add Rmarkdown as Markdown
 (add-to-list 'auto-mode-alist '("\\.Rmd\\'" . markdown-mode))
 (add-to-list 'auto-mode-alist '("\\.rmd\\'" . markdown-mode))
 
+;; Fix inline codeblocks being split in markdown mode in Rmarkdown documents when filling
 (add-hook 'fill-nobreak-predicate
 #'markdown-inline-code-at-point-p)

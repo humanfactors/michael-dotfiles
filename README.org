@@ -9,12 +9,144 @@ Very opinionated and quite customised dotfiles. Includes customisation and cente
 - Linux utilities
 
 ** Spacemacs Configuration
-[[file:docs/spacemacs-editing-style-hybrid.png]]
-My spacemacs configuration is broken down into several modules which are loaded in my Spacemacs =init.el=. Most of the functionality from these can be loaded directly into a standard Emacs 25 install - though this does require some manual steps. 
+   [[file:docs/spacemacs-editing-style-hybrid.png]]
 
+
+My spacemacs configuration is oriented around hybrid users. Importantly, I bind =C-S-P= to the leader key in Emacs editing style. The .spacemacs.d/ is broken down into several modules which are loaded in my Spacemacs =init.el=. Most of the functionality from these can be loaded directly into a standard Emacs 25 install - though this does require some manual steps. 
+
+I found that only loading these files if they existed was a good first error catcher.
 #+BEGIN_SRC emacs-lisp
   (if (file-readable-p "~/.spacemacs.d/gui-interaction.el") (load "~/.spacemacs.d/gui-interaction.el"))
   (if (file-readable-p "~/.spacemacs.d/keybinds.el") (load "~/.spacemacs.d/keybinds.el"))
   (if (file-readable-p "~/.spacemacs.d/modes-config.el") (load "~/.spacemacs.d/modes-config.el"))
   (if (file-readable-p "~/.spacemacs.d/org-config.el") (load "~/.spacemacs.d/org-config.el"))
 #+END_SRC
+
+*** Keybinds.el
+Some of the most important Spacemacs related usability changes for me:
+#+BEGIN_SRC emacs-lisp
+(global-set-key (kbd "M-<backspace>") 'backward-kill-word)
+(global-set-key (kbd "M-<prior>") `previous-buffer)
+(global-set-key (kbd "M-<next>") `next-buffer)
+(global-set-key (kbd "s-<prior>") `previous-buffer)
+(global-set-key (kbd "s-<next>") `next-buffer)
+
+
+;; Make horizontal movement cross lines
+(setq evil-cross-lines t)
+
+;; Critical Spacemacs Related Functions
+(global-set-key (kbd "C-x k") 'spacemacs/kill-this-buffer)
+
+;; Make evil-mode up/down operate in screen lines instead of logical lines
+(define-key evil-motion-state-map "j" 'evil-next-visual-line)
+(define-key evil-motion-state-map "k" 'evil-previous-visual-line)
+;; Also in visual mode
+(define-key evil-visual-state-map "j" 'evil-next-visual-line)
+(define-key evil-visual-state-map "k" 'evil-previous-visual-line)
+
+(defun end-of-line-and-indented-new-line ()
+  (interactive)
+  (end-of-line)
+  (newline-and-indent))
+(global-set-key (kbd "<S-return>") 'end-of-line-and-indented-new-line)
+
+#+END_SRC
+
+*** modes-config.el
+This contains my configuration for Python mode, the excellent note-taking app Deft, TeX made. The most important file here is my fix for inline code blocks being split when fill is used on paragraph. 
+#+BEGIN_SRC emacs-lisp
+;; Add Rmarkdown as Markdown
+(add-to-list 'auto-mode-alist '("\\.Rmd\\'" . markdown-mode))
+(add-to-list 'auto-mode-alist '("\\.rmd\\'" . markdown-mode))
+
+;; Fix inline codeblocks being split in markdown mode in Rmarkdown documents when filling
+(add-hook 'fill-nobreak-predicate
+#'markdown-inline-code-at-point-p)
+#+END_SRC
+
+*** gui-interaction.el
+This contains almost all of my major tweaks to Spacemacs/Emacs. Some of these are relatively sane defaults (in my view), and others are quite opinionated changes which I believe are fundamental an effective Spacemacs editing experience. Important code snippets below.
+
+#+NAME: Moving lines up and down meta arrow keys
+#+BEGIN_SRC emacs-lisp
+;; M-up and M-down move lines
+(defun move-line (n)
+  "Move the current line up or down by N lines."
+  (interactive "p")
+  (setq col (current-column))
+  (beginning-of-line) (setq start (point))
+  (end-of-line) (forward-char) (setq end (point))
+  (let ((line-text (delete-and-extract-region start end)))
+    (forward-line n)
+    (insert line-text)
+    ;; restore point to original column in moved line
+    (forward-line -1)
+    (forward-char col)))
+
+(defun move-line-up (n)
+  "Move the current line up by N lines."
+  (interactive "p")
+  (move-line (if (null n) -1 (- n))))
+
+(defun move-line-down (n)
+  "Move the current line down by N lines."
+  (interactive "p")
+  (move-line (if (null n) 1 n)))
+
+(global-set-key (kbd "M-<up>") 'move-line-up)
+(global-set-key (kbd "M-<down>") 'move-line-down)
+
+
+#+END_SRC
+
+#+NAME: Intuitive window resizing taken from elsewhere (sorry!)
+#+BEGIN_SRC emacs-lisp
+;; intuitive window resizing
+(defun xor (b1 b2)
+  (or (and b1 b2)
+      (and (not b1) (not b2))))
+
+(defun move-border-left-or-right (arg dir)
+  "General function covering move-border-left and move-border-right. If DIR is
+     t, then move left, otherwise move right."
+  (interactive)
+  (if (null arg) (setq arg 3))
+  (let ((left-edge (nth 0 (window-edges))))
+    (if (xor (= left-edge 0) dir)
+        (shrink-window arg t)
+        (enlarge-window arg t))))
+
+(defun move-border-up-or-down (arg dir)
+  "General function covering move-border-up and move-border-down. If DIR is
+     t, then move up, otherwise move down."
+  (interactive)
+  (if (null arg) (setq arg 3))
+  (let ((top-edge (nth 1 (window-edges))))
+    (if (xor (= top-edge 0) dir)
+        (shrink-window arg nil)
+        (enlarge-window arg nil))))
+
+(defun move-border-left (arg)
+  (interactive "P")
+  (move-border-left-or-right arg t))
+
+(defun move-border-right (arg)
+  (interactive "P")
+  (move-border-left-or-right arg nil))
+
+(defun move-border-up (arg)
+  (interactive "P")
+  (move-border-up-or-down arg t))
+
+(defun move-border-down (arg)
+  (interactive "P")
+  (move-border-up-or-down arg nil))
+
+(global-set-key (kbd "M-C-[") 'move-border-left)
+(global-set-key (kbd "M-C-]") 'move-border-right)
+(global-set-key (kbd "M-C-}") 'move-border-up)
+(global-set-key (kbd "M-C-{") 'move-border-down)
+
+#+END_SRC
+
