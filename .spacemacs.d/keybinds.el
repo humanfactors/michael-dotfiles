@@ -35,7 +35,6 @@
 (define-key global-map (kbd "s--") 'text-scale-decrease)
 
 (global-set-key (kbd "s-n") 'new-frame)
-(global-set-key (kbd "C-z") 'undo)
 (global-set-key (kbd "M-<backspace>") 'backward-kill-word)
 (global-set-key (kbd "s-z") 'undo)
 (global-set-key (kbd "s-Z") 'undo-tree-redo)
