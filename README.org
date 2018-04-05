@@ -166,6 +166,6 @@ I use [Ted Sluis's](https://github.com/tedsluis/tmux.conf) tmux configuration wh
 - Use F2 for help (press 'q' to return).
 - Use F3 for a list of hot-keys (press 'q' to return).
 
-[[file:https:/raw.githubusercontent.com/tedsluis/tmux.conf/master/tmux_screenshot.gif]]
+[[img:https:/raw.githubusercontent.com/tedsluis/tmux.conf/master/tmux_screenshot.gif]]
 
 
