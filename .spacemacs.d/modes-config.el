@@ -34,3 +34,9 @@
       ("\\chapter{%s}" . "\\chapter*{%s}")
       ("\\section{%s}" . "\\section*{%s}")
       ("\\subsection{%s}" . "\\subsection*{%s}")))))
+
+(add-to-list 'auto-mode-alist '("\\.Rmd\\'" . markdown-mode))
+(add-to-list 'auto-mode-alist '("\\.rmd\\'" . markdown-mode))
+
+(add-hook 'fill-nobreak-predicate
+#'markdown-inline-code-at-point-p)
