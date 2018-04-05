@@ -1,17 +1,21 @@
 ;;; FUNCTIONS USED FOR BINDINGS
 
-;; Experimental
-
-
+;; vi-like line insertion
+(define-key evil-emacs-state-map (kbd "C-o") (lambda () (interactive)(beginning-of-line)(open-line 1)))
+(define-key evil-emacs-state-map (kbd "M-o") (lambda () (interactive)(end-of-line)(newline)))
+;; Make horizontal movement cross lines
+(setq evil-cross-lines t)
 
 ;; Critical Spacemacs Related Functions
-(global-set-key (kbd "C-SPC C-SPC") 'set-mark-command)
-(global-set-key (kbd "C-SPC SPC") 'helm-M-x)
 (global-set-key (kbd "C-x k") 'spacemacs/kill-this-buffer)
-(global-set-key [f12] 'magit)
+
+
 ;; Insert Data time into Spacemacs Keyboard shortcut
 (defun insert-current-datetime () (interactive)
        (insert (shell-command-to-string "echo -n $(date '+%A (%B %d) @ %H:%m')")))
+
+(global-set-key "\C-x\M-d" `insert-current-datetime)
+
 
 ;; Insert newline after current line
 (defun end-of-line-and-indented-new-line ()
@@ -20,9 +24,6 @@
   (newline-and-indent))
 (global-set-key (kbd "<S-return>") 'end-of-line-and-indented-new-line)
 
-  ;; vi-like line insertion
-(define-key evil-emacs-state-map (kbd "C-o") (lambda () (interactive)(beginning-of-line)(open-line 1)))
-(define-key evil-emacs-state-map (kbd "M-o") (lambda () (interactive)(end-of-line)(newline)))
 
 
 ;; Neotree Quicklook Binds
@@ -43,16 +44,13 @@
 (global-set-key (kbd "M-<next>") `next-buffer)
 (global-set-key (kbd "s-<prior>") `previous-buffer)
 (global-set-key (kbd "s-<next>") `next-buffer)
-(global-set-key "\C-x\M-d" `insert-current-datetime)
+
 (global-set-key [f8] 'neotree-toggle)
 (global-set-key [f5] 'deft)
-
-
-(global-set-key [f9]  'ispell-word)
+(global-set-key [f12] 'magit)
 
 ;;; Evil Mode Visual Line Interaction Mode
-;; Make horizontal movement cross lines
-(setq evil-cross-lines t)
+
 ;; Make evil-mode up/down operate in screen lines instead of logical lines
 (define-key evil-motion-state-map "j" 'evil-next-visual-line)
 (define-key evil-motion-state-map "k" 'evil-previous-visual-line)
@@ -73,4 +71,4 @@
 (global-set-key (kbd "C-x M-2") (lambda() (interactive)(find-file "~/humanfactors/michael-blog/")))
 (global-set-key (kbd "C-x M-3") (lambda() (interactive)(find-file "~/Code/")))
 (global-set-key (kbd "C-x M-4") (lambda() (interactive)(dired "~/.spacemacs.d/")))
-(global-set-key (kbd "C-x M-5") (lambda() (interactive)(dired "~/PhD/atc-interruptions-derde-main")))
+(global-set-key (kbd "C-x M-5") (lambda() (interactive)(dired "~/PhD/atc-interruptions-derde")))
