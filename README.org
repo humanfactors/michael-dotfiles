@@ -8,6 +8,8 @@ Very opinionated and quite customised dotfiles. Includes customisation and cente
 - tmux
 - Linux utilities
 
+With time I will update all my configurations and try and make this automated.
+
 ** Spacemacs Configuration
    [[file:docs/spacemacs-editing-style-hybrid.png]]
 
@@ -153,7 +155,7 @@ This contains almost all of my major tweaks to Spacemacs/Emacs. Some of these ar
 
 ** Tmux
 
-I use [Ted Sluis's](https://github.com/tedsluis/tmux.conf) tmux configuration which provides an excellent out of the box experience. I've enabled mouse support.
+I use [[https://github.com/tedsluis/tmux.conf][Ted Sluis's]] tmux configuration which provides an excellent out of the box experience. I've enabled mouse support.
 
 *** Added features (compared to default tmux)
 - Use prefix \<ctrl\>-\<a\> instead of the default \<ctrl\>-\<b\> prefix.  
@@ -166,6 +168,7 @@ I use [Ted Sluis's](https://github.com/tedsluis/tmux.conf) tmux configuration wh
 - Use F2 for help (press 'q' to return).
 - Use F3 for a list of hot-keys (press 'q' to return).
 
-[[img:https:/raw.githubusercontent.com/tedsluis/tmux.conf/master/tmux_screenshot.gif]]
+#+html: <img src="https:/raw.githubusercontent.com/tedsluis/tmux.conf/master/tmux_screenshot.gif" />
+
 
 
