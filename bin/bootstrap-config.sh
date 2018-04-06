@@ -1,7 +1,11 @@
-# ln -s /home/skanky/Code/michael-dotfiles-debupdate/bin /home/skanky
-ln -s /home/skanky/Code/michael-dotfiles-debupdate/.zshenv /home/skanky/ &&
-ln -s /home/skanky/Code/michael-dotfiles-debupdate/.bashrc /home/skanky/ &&
-ln -s /home/skanky/Code/michael-dotfiles-debupdate/.zshrc /home/skanky/ &&
-ln -s /home/skanky/Code/michael-dotfiles-debupdate/.vim /home/skanky/ &&
-ln -s /home/skanky/Code/michael-dotfiles-debupdate/fonts/ /home/skanky/.fonts/ &&
-ln -s /home/skanky/Code/michael-dotfiles-debupdate/.tmux.conf /home/skanky/
+if [ -f ~/.bash_aliases ]; then
+    . ~/.bash_aliases
+fi
+
+# ln -s /home/michael/Code/dotfiles/bin /home/michael
+ln -s /home/michael/Code/dotfiles/.zshenv /home/michael/ &&
+ln -s /home/michael/Code/dotfiles/.bashrc /home/michael/ &&
+ln -s /home/michael/Code/dotfiles/.zshrc /home/michael/ &&
+ln -s /home/michael/Code/dotfiles/.vim /home/michael/ &&
+ln -s /home/michael/Code/dotfiles/fonts/ /home/michael/.fonts &&
+ln -s /home/michael/Code/dotfiles/.tmux.conf /home/michael/
