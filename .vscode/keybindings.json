@@ -1,0 +1,45 @@
+// Place your key bindings in this file to overwrite the defaults
+[
+    {
+        "key": "ctrl+k ctrl+b",
+        "command": "bookmarks.toggle",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "ctrl+alt+k",
+        "command": "-bookmarks.toggle",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "shift+alt+oem_6",
+        "command": "bookmarks.jumpToNext",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "ctrl+alt+l",
+        "command": "-bookmarks.jumpToNext",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "shift+alt+oem_4",
+        "command": "bookmarks.jumpToPrevious",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "ctrl+alt+j",
+        "command": "-bookmarks.jumpToPrevious",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "ctrl-shift-m",
+        "command": "editor.action.insertSnippet",
+        "args": { "snippet": "%>%" },
+        "when": "editorLangId == 'r'"
+    },
+    {
+        "key": "ctrl-'",
+        "command": "editor.action.insertSnippet",
+        "args": { "snippet": "- [ ] " },
+        "when": "editorLangId == 'markdown'"
+    }
+]
