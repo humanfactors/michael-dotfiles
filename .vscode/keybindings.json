@@ -33,13 +33,63 @@
     {
         "key": "ctrl-shift-m",
         "command": "editor.action.insertSnippet",
-        "args": { "snippet": "%>%" },
+        "args": {
+            "snippet": "%>%"
+        },
         "when": "editorLangId == 'r'"
     },
     {
         "key": "ctrl-'",
         "command": "editor.action.insertSnippet",
-        "args": { "snippet": "- [ ] " },
+        "args": {
+            "snippet": "- [ ] "
+        },
         "when": "editorLangId == 'markdown'"
+    },
+    {
+        "key": "ctrl+k ctrl+e",
+        "command": "workbench.action.quickOpen"
+    },
+    {
+        "key": "ctrl-e",
+        "command": "cursorEnd",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "ctrl-a",
+        "command": "cursorHome",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "ctrl+shift+a",
+        "command": "editor.action.selectAll"
+    },
+    {
+        "key": "ctrl+alt+a",
+        "command": "editor.action.selectAll"
+    }, 
+    {
+        "key": "ctrl+k ctrl-a",
+        "command": "workbench.action.tasks.runTask"
+    },
+    { 
+        "key": "ctrl+j ctrl+j",
+        "command": "cursorDown",
+        "when": "editorTextFocus" 
+    },
+    { 
+        "key": "ctrl+j ctrl+n",
+        "command": "cursorDown",
+        "when": "editorTextFocus" 
+    },
+    { 
+        "key": "ctrl+j ctrl+k",
+        "command": "cursorUp",
+        "when": "editorTextFocus" 
+    },
+    { 
+        "key": "ctrl+j ctrl+p",
+        "command": "cursorUp",
+        "when": "editorTextFocus" 
     }
 ]
