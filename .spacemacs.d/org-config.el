@@ -20,7 +20,9 @@
   (setq org-agenda-files (list "~/Dropbox/org/TODOs.org"
                                "~/Dropbox/org/meetings.org" 
                                "~/Dropbox/org/dstg.org" 
-                               "~/Dropbox/org/research.org"))
+                               "~/Dropbox/org/strickland.org"
+                               "~/Dropbox/Thesis"
+                               ))
 
   (setq org-publish-project-alist
       '(("org"
