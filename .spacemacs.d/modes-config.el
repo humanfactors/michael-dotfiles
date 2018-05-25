@@ -1,11 +1,14 @@
 ;; Python
 (setq python-shell-interpreter "python3")
 (setq python-shell-interpreter-args "")
-(setq python-tab-width 4)
+(setq python-tab-width 2)
+(setq tab-width 2)
+
+;; Go mode
 
 ;; Shell Config
-(setq explicit-shell-file-name "/bin/bash")
-
+;; (setq explicit-shell-file-name "/bin/bash")
+;; (setq explicit-shell-file-name "c:/Windows/System32/bash.exe")
 ;; Pandoc
 ;; (setq org-pandoc-options-for-markdown '((atx-headers . t)))
 ;; (setq org-pandoc-options-for-latex-pdf '((latex-engine . "xelatex")))
@@ -53,9 +56,22 @@
 (add-to-list 'auto-mode-alist '("\\.rmd\\'" . markdown-mode))
 
 ;; Fix inline codeblocks being split in markdown mode in Rmarkdown documents when filling
-(add-hook 'fill-nobreak-predicate
-#'markdown-inline-code-at-point-p)
+;; (add-hook 'fill-nobreak-predicate
+;; #'markdown-inline-code-at-point-p)
 
 
 ;; Default to insert git commit
 (add-hook 'git-commit-mode-hook 'evil-insert-state)
+
+
+;; No more _ to <-
+(setq ess-disable-underscore-assign t)
+
+;; no more fancy comments
+(setq ess-fancy-comments nil)
+(setq ess-indent-with-fancy-comments nil)
+
+(add-hook 'ess-mode-hook
+          (lambda()
+            (setq ess-indent-level 2
+                  tab-width 2)))
