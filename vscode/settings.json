@@ -1,0 +1,52 @@
+{
+    "editor.fontSize": 14,
+    "window.zoomLevel": 0,
+    "workbench.iconTheme": "vscode-icons",
+    "editor.fontFamily": "Fira Code",
+    "editor.fontLigatures": true,
+    "editor.wordWrap": "on",
+    "editor.minimap.enabled": false,
+    "editor.wordWrapColumn": 100,
+    "rewrap.wrappingColumn": 100,
+    "workbench.colorTheme": "Ayu Mirage",
+    "workbench.panel.location": "bottom",
+    "terminal.integrated.fontSize": 12,
+    "terminal.integrated.shell.windows": "C:\\WINDOWS\\sysnative\\cmd.exe",
+    "terminal.integrated.shellArgs.windows": [
+        "/k",
+        "C:\\Code\\cmder\\vscode.bat",
+    ],
+    "files.associations": {
+        "*.el": "lisp"
+    },
+    "files.eol": "\n",
+    "files.insertFinalNewline": true,
+    "cSpell.enabledLanguageIds": [
+        "json",
+        "latex",
+        "markdown",
+        "plaintext",
+        "restructuredtext",
+        "text",
+        "yml"
+    ],
+    "cSpell.language": "en",
+    "pasteImage.path": "./images",
+    "explorer.confirmDragAndDrop": false,
+    "explorer.confirmDelete": false,
+    "editor.renderWhitespace": "none",
+    "r.lintr.enabled": false,
+    "r.lintr.cache": false,
+    "r.rterm.windows": "C:\\Program Files\\R\\R-3.4.3\\bin\\x64\\R.exe",
+    "[r]": {
+        "editor.wordSeparators": "`~!@#$%^&*()-=+[{]}\\|;:'\",<>/?"
+    },
+    "[rmd]": {
+        "editor.wordSeparators": "`~!@#$%^&*()-=+[{]}\\|;:'\",<>/?"
+    },
+    "org.todoKeywords": [
+        "TODO",
+        "REMEMBER",
+        "DONE"
+    ]
+}

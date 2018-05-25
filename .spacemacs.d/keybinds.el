@@ -1,43 +1,13 @@
-;;; FUNCTIONS USED FOR BINDINGS
-
-;; vi-like line insertion
-(define-key evil-emacs-state-map (kbd "C-o") (lambda () (interactive)(beginning-of-line)(open-line 1)))
-(define-key evil-emacs-state-map (kbd "M-o") (lambda () (interactive)(end-of-line)(newline)))
-;; Make horizontal movement cross lines
-(setq evil-cross-lines t)
-
-;; Critical Spacemacs Related Functions
+                                        ; Base Emacs bindings
+(global-set-key (kbd "M-h") 'backward-kill-word)
+(global-set-key (kbd "M-<backspace>") 'backward-kill-word)
 (global-set-key (kbd "C-x k") 'spacemacs/kill-this-buffer)
+(global-set-key (kbd "C-z") 'undo)
+(global-set-key (kbd "C-S-Z") 'redo)
 
-
-;; Insert Data time into Spacemacs Keyboard shortcut
-(defun insert-current-datetime () (interactive)
-       (insert (shell-command-to-string "echo -n $(date '+%A (%B %d) @ %H:%m')")))
-
-(global-set-key "\C-x\M-d" `insert-current-datetime)
-
-
-;; Insert newline after current line
-(defun end-of-line-and-indented-new-line ()
-  (interactive)
-  (end-of-line)
-  (newline-and-indent))
-(global-set-key (kbd "<S-return>") 'end-of-line-and-indented-new-line)
-
-
-
-
-;; Neotree Quicklook Binds
-(with-eval-after-load 'neotree
-  (evil-define-key 'evilified neotree-mode-map (kbd "RET") 'neotree-quick-look)
-  (evil-define-key 'evilified neotree-mode-map (kbd "S-<return>") 'neotree-enter))
-
-;;; BINDINGS
 (define-key global-map (kbd "s-=") 'text-scale-increase)
 (define-key global-map (kbd "s--") 'text-scale-decrease)
-
 (global-set-key (kbd "s-n") 'new-frame)
-(global-set-key (kbd "M-<backspace>") 'backward-kill-word)
 (global-set-key (kbd "s-z") 'undo)
 (global-set-key (kbd "s-Z") 'undo-tree-redo)
 (global-set-key (kbd "M-<prior>") `previous-buffer)
@@ -49,26 +19,95 @@
 (global-set-key [f5] 'deft)
 (global-set-key [f12] 'magit)
 
-;;; Evil Mode Visual Line Interaction Mode
+;; Insert newline after current line
+(defun end-of-line-and-indented-new-line ()
+  (interactive)
+  (end-of-line)
+  (newline-and-indent))
+(global-set-key (kbd "<S-return>") 'end-of-line-and-indented-new-line)
 
+
+(define-key evil-emacs-state-map (kbd "C-o") (lambda () (interactive)(beginning-of-line)(open-line 1))) ; vi-like line insertion
+
+
+                                        ; Evil Configuration
 ;; Make evil-mode up/down operate in screen lines instead of logical lines
 (define-key evil-motion-state-map "j" 'evil-next-visual-line)
 (define-key evil-motion-state-map "k" 'evil-previous-visual-line)
 ;; Also in visual mode
 (define-key evil-visual-state-map "j" 'evil-next-visual-line)
 (define-key evil-visual-state-map "k" 'evil-previous-visual-line)
+;; Make horizontal movement cross lines
+(setq evil-cross-lines t)
 
-;; Windows Key Shortcuts
-(define-key global-map [?\s-f] 'projectile-find-file)
 
-;; Quick Open Files
-;; (spacemacs/set-leader-keys "ocp" (lambda () (interactive) (find-file "~/Dropbox/org/phd-notes.org")))
-;; (spacemacs/set-leader-keys "ocf" (lambda () (interactive) (find-file "~/Dropbox/org/freelance.org")))
-;; (spacemacs/set-leader-keys "oct" (lambda () (interactive) (find-file "~/Dropbox/org/TODOs.org")))
-;; (define-key global-map [?\s-d] (lambda() (interactive)(find-file "~/.spacemacs-user-config.el")))
+;; Neotree Quicklook Binds
+(with-eval-after-load 'neotree
+  (evil-define-key 'evilified neotree-mode-map (kbd "RET") 'neotree-quick-look)
+  (evil-define-key 'evilified neotree-mode-map (kbd "S-<return>") 'neotree-enter))
 
-(global-set-key (kbd "C-x M-1") (lambda() (interactive)(find-file "~/Dropbox/org/")))
-(global-set-key (kbd "C-x M-2") (lambda() (interactive)(find-file "~/humanfactors/michael-blog/")))
-(global-set-key (kbd "C-x M-3") (lambda() (interactive)(find-file "~/Code/")))
-(global-set-key (kbd "C-x M-4") (lambda() (interactive)(dired "~/.spacemacs.d/")))
-(global-set-key (kbd "C-x M-5") (lambda() (interactive)(dired "~/PhD/atc-interruptions-derde")))
+
+;; Utility Functionality
+(defun michael-timestamp ()
+  "Insert a timestamp at the current point.
+Note no attempt to go to beginning of line and no added carriage return.
+Uses `bjk-timestamp-format' for formatting the date/time."
+  (interactive)
+  (insert (format-time-string "%Y-%m-%d %a @ %H:%M" (current-time))))
+(global-set-key "\C-x\M-d" `michael-timestamp)
+
+(defun michael-filetimestamp ()
+  "Insert a timestamp at the current point.
+Note no attempt to go to beginning of line and no added carriage return.
+Uses `bjk-timestamp-format' for formatting the date/time."
+  (interactive)
+  (insert (format-time-string "%Y%m%d_%H%M" (current-time))))
+
+
+
+;; Spacemacs Related Functions
+(spacemacs/declare-prefix "od" "dired-michael")
+(spacemacs/declare-prefix "oi" "inserts-michael")
+(spacemacs/declare-prefix "oe" "editing-michael")
+(spacemacs/declare-prefix "oo" "openpath-michael")
+
+(spacemacs/set-leader-keys "ode" 'wdired-change-to-wdired-mode)
+(spacemacs/set-leader-keys "oid" 'michael-timestamp)
+(spacemacs/set-leader-keys "oif" 'michael-filetimestamp)
+
+(defun openpath-dropbox ()
+  (interactive) (find-file "~/Dropbox/"))
+
+(defun openpath-orgdir ()
+  (interactive) (find-file "~/Dropbox/org/"))
+
+(defun openpath-blog ()
+  (interactive) (find-file "~/humanfactors/michael-blog/"))
+
+(defun openpath-code ()
+  (interactive) (find-file "~/Code/"))
+
+(defun openpath-dotfiles ()
+  (interactive) (find-file "~/.spacemacs.d/"))
+
+(defun openpath-atc-derde ()
+   (interactive) (find-file "~/PhD/atc-interruptions-derde"))
+
+(defun openpath-home ()
+  (interactive) (find-file "~/"))
+
+
+(global-set-key (kbd "C-x M-1") 'openpath-dropbox) 
+(global-set-key (kbd "C-x M-2") 'openpath-orgdir) 
+(global-set-key (kbd "C-x M-3") 'openpath-blog) 
+(global-set-key (kbd "C-x M-4") 'openpath-code) 
+(global-set-key (kbd "C-x M-5") 'openpath-dotfiles)
+(global-set-key (kbd "C-x M-6") 'openpath-atc-derde)
+
+(spacemacs/set-leader-keys "ood" 'openpath-dropbox)
+(spacemacs/set-leader-keys "ooo" 'openpath-orgdir)
+(spacemacs/set-leader-keys "oob" 'openpath-blog)
+(spacemacs/set-leader-keys "ooc" 'openpath-code)
+(spacemacs/set-leader-keys "oos" 'openpath-dotfiles)
+(spacemacs/set-leader-keys "oo3" 'openpath-atc-derde)
+(spacemacs/set-leader-keys "ooh" 'openpath-home)
