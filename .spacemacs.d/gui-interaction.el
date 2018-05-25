@@ -1,6 +1,6 @@
 ;; (setq cua-mode nil)
 
-
+(setq evil-evilified-state-cursor '(bar))
 ;; Text Editing and Selection Configuration
 (delete-selection-mode 1)
 (setq-default fill-column 120)
