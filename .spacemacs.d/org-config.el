@@ -11,10 +11,10 @@
 
 
   ;; Inline code evaluation
-  ;; (setq org-confirm-babel-evaluate nil)
+  (setq org-confirm-babel-evaluate nil)
   ;; (org-babel-do-load-languages
-  ;;  'org-babel-load-languages
-  ;;  '((R . t)))
+   ;; 'org-babel-load-languages
+   ;; '((R . t)))
 
 
   (setq org-agenda-files (list "~/Dropbox/org/TODOs.org"
@@ -54,8 +54,8 @@
     (call-interactively 'org-insert-subheading )))
 
   (add-hook 'org-mode-hook (lambda ()
-                             (spacemacs/set-leader-keys "oe" 'org-tree-open-in-right-frame)
-                             (spacemacs/set-leader-keys "oo" 'org-tree-to-indirect-buffer)))
+                             (spacemacs/set-leader-keys "obr" 'org-tree-open-in-right-frame)
+                             (spacemacs/set-leader-keys "obb" 'org-tree-to-indirect-buffer)))
 
   (defun org-tree-open-in-right-frame ()
     (interactive)

@@ -1,6 +1,5 @@
 ;; (setq cua-mode nil)
-
-(setq evil-evilified-state-cursor '(bar))
+(setq evil-normal-state-cursor 'bar)
 ;; Text Editing and Selection Configuration
 (delete-selection-mode 1)
 (setq-default fill-column 120)
@@ -124,3 +123,21 @@
 (global-set-key (kbd "M-C-]") 'move-border-right)
 (global-set-key (kbd "M-C-}") 'move-border-up)
 (global-set-key (kbd "M-C-{") 'move-border-down)
+
+(defmacro when-system (type &rest body)
+  "Evaluate BODY if `system-type' equals TYPE."
+  (declare (indent defun))
+  `(when (eq system-type ',type)
+     ,@body))
+
+
+(defun open-directory-in-system-viewer ()
+  (interactive)
+  (when-system gnu/linux
+    (if default-directory
+        (browse-url-of-file (expand-file-name default-directory))
+      (error "No `default-directory' to open")))
+  (when-system windows-nt
+    (if default-directory
+        (w32explore (expand-file-name default-directory))
+      (error "No `default-directory' to open"))))

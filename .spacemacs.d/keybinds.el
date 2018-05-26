@@ -70,6 +70,7 @@ Uses `bjk-timestamp-format' for formatting the date/time."
 (spacemacs/declare-prefix "oi" "inserts-michael")
 (spacemacs/declare-prefix "oe" "editing-michael")
 (spacemacs/declare-prefix "oo" "openpath-michael")
+(spacemacs/declare-prefix "ob" "buffer-manipulations")
 
 (spacemacs/set-leader-keys "ode" 'wdired-change-to-wdired-mode)
 (spacemacs/set-leader-keys "oid" 'michael-timestamp)
@@ -91,7 +92,11 @@ Uses `bjk-timestamp-format' for formatting the date/time."
   (interactive) (find-file "~/.spacemacs.d/"))
 
 (defun openpath-atc-derde ()
-   (interactive) (find-file "~/PhD/atc-interruptions-derde"))
+  (interactive)
+  (when-system gnu/linux
+    (find-file "~/phd/atc-interruptions-derde"))
+  (when-system windows-nt
+    (find-file "~/PhD/atc-interruptions-derde")))
 
 (defun openpath-home ()
   (interactive) (find-file "~/"))
@@ -103,6 +108,7 @@ Uses `bjk-timestamp-format' for formatting the date/time."
 (global-set-key (kbd "C-x M-4") 'openpath-code) 
 (global-set-key (kbd "C-x M-5") 'openpath-dotfiles)
 (global-set-key (kbd "C-x M-6") 'openpath-atc-derde)
+(global-set-key (kbd "C-x M-f") 'open-directory-in-system-viewer)
 
 (spacemacs/set-leader-keys "ood" 'openpath-dropbox)
 (spacemacs/set-leader-keys "ooo" 'openpath-orgdir)
@@ -111,3 +117,7 @@ Uses `bjk-timestamp-format' for formatting the date/time."
 (spacemacs/set-leader-keys "oos" 'openpath-dotfiles)
 (spacemacs/set-leader-keys "oo3" 'openpath-atc-derde)
 (spacemacs/set-leader-keys "ooh" 'openpath-home)
+(spacemacs/set-leader-keys "o TAB" 'open-directory-in-system-viewer)
+
+
+
