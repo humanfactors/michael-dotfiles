@@ -120,4 +120,3 @@ Uses `bjk-timestamp-format' for formatting the date/time."
 (spacemacs/set-leader-keys "o TAB" 'open-directory-in-system-viewer)
 
 
-
