@@ -79,6 +79,12 @@ Uses `bjk-timestamp-format' for formatting the date/time."
 (defun openpath-dropbox ()
   (interactive) (find-file "~/Dropbox/"))
 
+(defun openpath-phd ()
+  (interactive) (find-file "~/Dropbox/PhD-Current"))
+
+(defun openpath-thesis ()
+  (interactive) (find-file "~/Dropbox/Thesis/"))
+
 (defun openpath-orgdir ()
   (interactive) (find-file "~/Dropbox/org/"))
 
@@ -117,6 +123,9 @@ Uses `bjk-timestamp-format' for formatting the date/time."
 (spacemacs/set-leader-keys "oos" 'openpath-dotfiles)
 (spacemacs/set-leader-keys "oo3" 'openpath-atc-derde)
 (spacemacs/set-leader-keys "ooh" 'openpath-home)
+(spacemacs/set-leader-keys "oot" 'openpath-thesis)
+(spacemacs/set-leader-keys "oop" 'openpath-phd)
+
 (spacemacs/set-leader-keys "o TAB" 'open-directory-in-system-viewer)
 
 
