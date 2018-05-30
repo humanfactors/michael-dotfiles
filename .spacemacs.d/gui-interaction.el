@@ -11,6 +11,13 @@
  lazy-highlight-cleanup t             ; Leave highlights after an isearch session
  lazy-highlight-initial-delay 0)        ; Start highlighting immediately
 
+;; ‘M-y’ (‘yank-pop’) cycles backwards through the ‘kill-ring’.
+;; Here’s a way to cycle in the reverse direction with ‘M-Y’ (Meta-Shift-Y):
+(defun yank-pop-forwards (arg)
+  (interactive "p")
+  (yank-pop (- arg)))
+(global-set-key "\M-Y" 'yank-pop-forwards) ; M-Y (Meta-Shift-Y)
+
 ;;; Buffer Display Configuration
 (setq powerline-default-separator 'utf-8)
 (setq word-wrap 1)
@@ -141,3 +148,5 @@
     (if default-directory
         (w32explore (expand-file-name default-directory))
       (error "No `default-directory' to open"))))
+
+
