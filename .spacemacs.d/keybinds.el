@@ -14,6 +14,7 @@
 (global-set-key (kbd "M-<next>") `next-buffer)
 (global-set-key (kbd "s-<prior>") `previous-buffer)
 (global-set-key (kbd "s-<next>") `next-buffer)
+(global-set-key (kbd "M-D") 'spacemacs/duplicate-line-or-region)
 
 (global-set-key [f8] 'neotree-toggle)
 (global-set-key [f5] 'deft)
