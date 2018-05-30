@@ -3,3 +3,4 @@
 !.skankybin/*
 !.vimrc
 !.bashrc
+.spacemacs.d/init.el
