@@ -4,6 +4,7 @@
 (global-set-key (kbd "C-x k") 'spacemacs/kill-this-buffer)
 (global-set-key (kbd "C-z") 'undo)
 (global-set-key (kbd "C-S-Z") 'redo)
+(define-key evil-motion-state-map (kbd "C-y") 'yank)
 
 (define-key global-map (kbd "s-=") 'text-scale-increase)
 (define-key global-map (kbd "s--") 'text-scale-decrease)
@@ -19,6 +20,10 @@
 (global-set-key [f8] 'neotree-toggle)
 (global-set-key [f5] 'deft)
 (global-set-key [f12] 'magit)
+
+
+(global-set-key (kbd "C-c <backspace>") 'hungry-delete-backward)
+(global-set-key (kbd "C-c <deletechar>") 'hungry-delete-forward)
 
 ;; Insert newline after current line
 (defun end-of-line-and-indented-new-line ()
