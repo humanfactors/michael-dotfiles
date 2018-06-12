@@ -68,10 +68,10 @@
 (setq ess-disable-underscore-assign t)
 
 ;; no more fancy comments
-(setq ess-fancy-comments nil)
-(setq ess-indent-with-fancy-comments nil)
 
 (add-hook 'ess-mode-hook
           (lambda()
             (setq ess-indent-level 2
-                  tab-width 2)))
+                  tab-width 2)
+            (setq ess-fancy-comments nil)
+            (setq ess-indent-with-fancy-comments nil)))

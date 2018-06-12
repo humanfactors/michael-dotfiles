@@ -21,9 +21,18 @@
 (global-set-key [f5] 'deft)
 (global-set-key [f12] 'magit)
 
+(global-set-key (kbd "C-{") 'backward-sentence)
+(global-set-key (kbd "C-}") 'forward-sentence)
 
 (global-set-key (kbd "C-c <backspace>") 'hungry-delete-backward)
 (global-set-key (kbd "C-c <deletechar>") 'hungry-delete-forward)
+
+;; Orgmode Bindings
+
+(with-eval-after-load 'org
+  (bind-key "C-c b" #'spacemacs/org-bold org-mode-map)
+  (bind-key "C-c i" #'spacemacs/org-italic org-mode-map)
+  (bind-key "C-c `" #'spacemacs/org-code org-mode-map))
 
 ;; Insert newline after current line
 (defun end-of-line-and-indented-new-line ()
