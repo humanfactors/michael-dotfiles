@@ -1,8 +1,8 @@
 ;; (setq cua-mode nil)
-(setq evil-normal-state-cursor 'bar)
+(setq evil-normal-state-cursor 'square)
 ;; Text Editing and Selection Configuration
 (delete-selection-mode 1)
-(setq-default fill-column 120)
+(setq-default fill-column 100)
 (setq mouse-yank-at-point nil) ;; Fixes bug associated with middle click paste for spell check
 (setq auto-fill-mode 1)
 (setq tab-width 4) ; or any other preferred value
