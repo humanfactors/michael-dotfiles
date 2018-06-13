@@ -1,9 +1,8 @@
 ;; (setq cua-mode nil)
-
-(setq evil-evilified-state-cursor '(bar))
+(setq evil-normal-state-cursor 'square)
 ;; Text Editing and Selection Configuration
 (delete-selection-mode 1)
-(setq-default fill-column 120)
+(setq-default fill-column 100)
 (setq mouse-yank-at-point nil) ;; Fixes bug associated with middle click paste for spell check
 (setq auto-fill-mode 1)
 (setq tab-width 4) ; or any other preferred value
@@ -11,6 +10,13 @@
  isearch-allow-scroll t                 ; Allow scrolling in an isearch session
  lazy-highlight-cleanup t             ; Leave highlights after an isearch session
  lazy-highlight-initial-delay 0)        ; Start highlighting immediately
+
+;; ‘M-y’ (‘yank-pop’) cycles backwards through the ‘kill-ring’.
+;; Here’s a way to cycle in the reverse direction with ‘M-Y’ (Meta-Shift-Y):
+(defun yank-pop-forwards (arg)
+  (interactive "p")
+  (yank-pop (- arg)))
+(global-set-key "\M-Y" 'yank-pop-forwards) ; M-Y (Meta-Shift-Y)
 
 ;;; Buffer Display Configuration
 (setq powerline-default-separator 'utf-8)
@@ -124,3 +130,23 @@
 (global-set-key (kbd "M-C-]") 'move-border-right)
 (global-set-key (kbd "M-C-}") 'move-border-up)
 (global-set-key (kbd "M-C-{") 'move-border-down)
+
+(defmacro when-system (type &rest body)
+  "Evaluate BODY if `system-type' equals TYPE."
+  (declare (indent defun))
+  `(when (eq system-type ',type)
+     ,@body))
+
+
+(defun open-directory-in-system-viewer ()
+  (interactive)
+  (when-system gnu/linux
+    (if default-directory
+        (browse-url-of-file (expand-file-name default-directory))
+      (error "No `default-directory' to open")))
+  (when-system windows-nt
+    (if default-directory
+        (w32explore (expand-file-name default-directory))
+      (error "No `default-directory' to open"))))
+
+

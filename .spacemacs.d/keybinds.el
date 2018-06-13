@@ -4,6 +4,7 @@
 (global-set-key (kbd "C-x k") 'spacemacs/kill-this-buffer)
 (global-set-key (kbd "C-z") 'undo)
 (global-set-key (kbd "C-S-Z") 'redo)
+(define-key evil-motion-state-map (kbd "C-y") 'yank)
 
 (define-key global-map (kbd "s-=") 'text-scale-increase)
 (define-key global-map (kbd "s--") 'text-scale-decrease)
@@ -14,10 +15,24 @@
 (global-set-key (kbd "M-<next>") `next-buffer)
 (global-set-key (kbd "s-<prior>") `previous-buffer)
 (global-set-key (kbd "s-<next>") `next-buffer)
+(global-set-key (kbd "M-D") 'spacemacs/duplicate-line-or-region)
 
 (global-set-key [f8] 'neotree-toggle)
 (global-set-key [f5] 'deft)
 (global-set-key [f12] 'magit)
+
+(global-set-key (kbd "C-{") 'backward-sentence)
+(global-set-key (kbd "C-}") 'forward-sentence)
+
+(global-set-key (kbd "C-c <backspace>") 'hungry-delete-backward)
+(global-set-key (kbd "C-c <deletechar>") 'hungry-delete-forward)
+
+;; Orgmode Bindings
+
+(with-eval-after-load 'org
+  (bind-key "C-c b" #'spacemacs/org-bold org-mode-map)
+  (bind-key "C-c i" #'spacemacs/org-italic org-mode-map)
+  (bind-key "C-c `" #'spacemacs/org-code org-mode-map))
 
 ;; Insert newline after current line
 (defun end-of-line-and-indented-new-line ()
@@ -72,6 +87,7 @@ Uses `bjk-timestamp-format' for formatting the date/time."
 (spacemacs/declare-prefix "oi" "inserts-michael")
 (spacemacs/declare-prefix "oe" "editing-michael")
 (spacemacs/declare-prefix "oo" "openpath-michael")
+(spacemacs/declare-prefix "ob" "buffer-manipulations")
 
 (spacemacs/set-leader-keys "ode" 'wdired-change-to-wdired-mode)
 (spacemacs/set-leader-keys "oid" 'michael-timestamp)
@@ -79,6 +95,12 @@ Uses `bjk-timestamp-format' for formatting the date/time."
 
 (defun openpath-dropbox ()
   (interactive) (find-file "~/Dropbox/"))
+
+(defun openpath-phd ()
+  (interactive) (find-file "~/Dropbox/PhD-Current"))
+
+(defun openpath-thesis ()
+  (interactive) (find-file "~/Dropbox/Thesis/"))
 
 (defun openpath-orgdir ()
   (interactive) (find-file "~/Dropbox/org/"))
@@ -93,7 +115,11 @@ Uses `bjk-timestamp-format' for formatting the date/time."
   (interactive) (find-file "~/.spacemacs.d/"))
 
 (defun openpath-atc-derde ()
-   (interactive) (find-file "~/PhD/atc-interruptions-derde"))
+  (interactive)
+  (when-system gnu/linux
+    (find-file "~/phd/atc-interruptions-derde"))
+  (when-system windows-nt
+    (find-file "~/PhD/atc-interruptions-derde")))
 
 (defun openpath-home ()
   (interactive) (find-file "~/"))
@@ -105,6 +131,7 @@ Uses `bjk-timestamp-format' for formatting the date/time."
 (global-set-key (kbd "C-x M-4") 'openpath-code) 
 (global-set-key (kbd "C-x M-5") 'openpath-dotfiles)
 (global-set-key (kbd "C-x M-6") 'openpath-atc-derde)
+(global-set-key (kbd "C-x M-f") 'open-directory-in-system-viewer)
 
 (spacemacs/set-leader-keys "ood" 'openpath-dropbox)
 (spacemacs/set-leader-keys "ooo" 'openpath-orgdir)
@@ -113,3 +140,9 @@ Uses `bjk-timestamp-format' for formatting the date/time."
 (spacemacs/set-leader-keys "oos" 'openpath-dotfiles)
 (spacemacs/set-leader-keys "oo3" 'openpath-atc-derde)
 (spacemacs/set-leader-keys "ooh" 'openpath-home)
+(spacemacs/set-leader-keys "oot" 'openpath-thesis)
+(spacemacs/set-leader-keys "oop" 'openpath-phd)
+
+(spacemacs/set-leader-keys "o TAB" 'open-directory-in-system-viewer)
+
+
