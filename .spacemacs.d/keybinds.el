@@ -1,5 +1,5 @@
                                         ; Base Emacs bindings
-(global-set-key (kbd "M-h") 'backward-kill-word)
+;; (global-set-key (kbd "M-h") 'backward-kill-word)
 (global-set-key (kbd "M-<backspace>") 'backward-kill-word)
 (global-set-key (kbd "C-x k") 'spacemacs/kill-this-buffer)
 (global-set-key (kbd "C-z") 'undo)
@@ -28,6 +28,8 @@
 
 
 (define-key evil-emacs-state-map (kbd "C-o") (lambda () (interactive)(beginning-of-line)(open-line 1))) ; vi-like line insertion
+
+(bind-key "C-l" 'dired-up-directory dired-mode-map)
 
 
                                         ; Evil Configuration
