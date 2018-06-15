@@ -17,10 +17,7 @@
    ;; '((R . t)))
 
 
-  (setq org-agenda-files (list "~/Dropbox/org/TODOs.org"
-                               "~/Dropbox/org/meetings.org" 
-                               "~/Dropbox/org/dstg.org" 
-                               "~/Dropbox/org/strickland.org"
+  (setq org-agenda-files (list "~/Dropbox/org/"
                                "~/Dropbox/Thesis"
                                ))
 
