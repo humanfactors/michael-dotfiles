@@ -32,6 +32,8 @@
 (with-eval-after-load 'org
   (bind-key "C-c b" #'spacemacs/org-bold org-mode-map)
   (bind-key "C-c i" #'spacemacs/org-italic org-mode-map)
+  (spacemacs/set-leader-keys "aou" 'org-publish)
+  (spacemacs/set-leader-keys "aow" 'org-copy-subtree)
   (bind-key "C-c `" #'spacemacs/org-code org-mode-map))
 
 ;; Insert newline after current line
@@ -44,7 +46,7 @@
 
 (define-key evil-emacs-state-map (kbd "C-o") (lambda () (interactive)(beginning-of-line)(open-line 1))) ; vi-like line insertion
 
-(bind-key "C-l" 'dired-up-directory dired-mode-map)
+;; (bind-key "C-l" 'dired-up-directory dired-mode-map)
 
 
                                         ; Evil Configuration
@@ -106,7 +108,7 @@ Uses `bjk-timestamp-format' for formatting the date/time."
   (interactive) (find-file "~/Dropbox/org/"))
 
 (defun openpath-blog ()
-  (interactive) (find-file "~/humanfactors/michael-blog/"))
+  (interactive) (find-file "~/blog"))
 
 (defun openpath-code ()
   (interactive) (find-file "~/Code/"))
@@ -133,6 +135,8 @@ Uses `bjk-timestamp-format' for formatting the date/time."
 (global-set-key (kbd "C-x M-6") 'openpath-atc-derde)
 (global-set-key (kbd "C-x M-f") 'open-directory-in-system-viewer)
 
+(spacemacs/set-leader-keys "ok" '(find-file "~/.spacemacs.d/keybinds.el"))
+(spacemacs/set-leader-keys "ot" 'global-set-key)
 (spacemacs/set-leader-keys "ood" 'openpath-dropbox)
 (spacemacs/set-leader-keys "ooo" 'openpath-orgdir)
 (spacemacs/set-leader-keys "oob" 'openpath-blog)

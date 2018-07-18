@@ -1,5 +1,5 @@
 ;; Python
-(setq python-shell-interpreter "python3")
+(setq python-shell-interpreter "python")
 (setq python-shell-interpreter-args "")
 (setq python-tab-width 2)
 (setq tab-width 2)
