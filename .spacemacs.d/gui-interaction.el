@@ -1,5 +1,7 @@
 ;; (setq cua-mode nil)
 (setq evil-normal-state-cursor 'square)
+
+;; (add-to-list 'default-frame-alist '(internal-border-width . 0)) ; sets vertical padding
 ;; Text Editing and Selection Configuration
 (delete-selection-mode 1)
 (setq-default fill-column 100)
@@ -10,6 +12,12 @@
  isearch-allow-scroll t                 ; Allow scrolling in an isearch session
  lazy-highlight-cleanup t             ; Leave highlights after an isearch session
  lazy-highlight-initial-delay 0)        ; Start highlighting immediately
+
+;; Disable font lock changing monospace
+(custom-set-faces
+ '(fixed-pitch ((t nil)))
+ )
+
 
 ;; ‘M-y’ (‘yank-pop’) cycles backwards through the ‘kill-ring’.
 ;; Here’s a way to cycle in the reverse direction with ‘M-Y’ (Meta-Shift-Y):
