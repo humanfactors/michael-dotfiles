@@ -70,7 +70,7 @@
 ;; No more _ to <-
 (setq ess-disable-underscore-assign t)
 
-(with eval-after-load 'easy-hugo
+(with-eval-after-load 'easy-hugo
 
 ;; Easy Hugo
 (defun cesco/easy-hugo ()
@@ -100,7 +100,7 @@
     (kbd "TAB") 'easy-hugo-open
     (kbd "RET") 'easy-hugo-preview))
 
-(define-key global-map (kbd "C-c <f9>") 'easy-hugo)
+
 (add-hook 'easy-hugo-mode-hook 'cesco/easy-hugo)
 )
 

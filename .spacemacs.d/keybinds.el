@@ -18,7 +18,7 @@
 (global-set-key (kbd "M-D") 'spacemacs/duplicate-line-or-region)
 
 (global-set-key [f8] 'neotree-toggle)
-(global-set-key [f5] 'deft)
+
 (global-set-key [f12] 'magit)
 
 (global-set-key (kbd "C-{") 'backward-sentence)
@@ -81,6 +81,10 @@ Note no attempt to go to beginning of line and no added carriage return.
 Uses `bjk-timestamp-format' for formatting the date/time."
   (interactive)
   (insert (format-time-string "%Y%m%d_%H%M" (current-time))))
+
+(spacemacs/declare-prefix "<f5>" "quick-utils-menu")
+(define-key global-map (kbd "<f5><f9>") 'easy-hugo)
+(define-key global-map (kbd "<f5><f5>") 'deft)
 
 
 
