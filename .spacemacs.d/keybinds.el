@@ -18,7 +18,7 @@
 (global-set-key (kbd "M-D") 'spacemacs/duplicate-line-or-region)
 
 (global-set-key [f8] 'neotree-toggle)
-(global-set-key [f5] 'deft)
+
 (global-set-key [f12] 'magit)
 
 (global-set-key (kbd "C-{") 'backward-sentence)
@@ -32,6 +32,8 @@
 (with-eval-after-load 'org
   (bind-key "C-c b" #'spacemacs/org-bold org-mode-map)
   (bind-key "C-c i" #'spacemacs/org-italic org-mode-map)
+  (spacemacs/set-leader-keys "aou" 'org-publish)
+  (spacemacs/set-leader-keys "aow" 'org-copy-subtree)
   (bind-key "C-c `" #'spacemacs/org-code org-mode-map))
 
 ;; Insert newline after current line
@@ -44,7 +46,7 @@
 
 (define-key evil-emacs-state-map (kbd "C-o") (lambda () (interactive)(beginning-of-line)(open-line 1))) ; vi-like line insertion
 
-(bind-key "C-l" 'dired-up-directory dired-mode-map)
+;; (bind-key "C-l" 'dired-up-directory dired-mode-map)
 
 
                                         ; Evil Configuration
@@ -80,6 +82,10 @@ Uses `bjk-timestamp-format' for formatting the date/time."
   (interactive)
   (insert (format-time-string "%Y%m%d_%H%M" (current-time))))
 
+(spacemacs/declare-prefix "<f5>" "quick-utils-menu")
+(define-key global-map (kbd "<f5><f9>") 'easy-hugo)
+(define-key global-map (kbd "<f5><f5>") 'deft)
+
 
 
 ;; Spacemacs Related Functions
@@ -106,7 +112,7 @@ Uses `bjk-timestamp-format' for formatting the date/time."
   (interactive) (find-file "~/Dropbox/org/"))
 
 (defun openpath-blog ()
-  (interactive) (find-file "~/humanfactors/michael-blog/"))
+  (interactive) (find-file "~/blog"))
 
 (defun openpath-code ()
   (interactive) (find-file "~/Code/"))
@@ -133,6 +139,8 @@ Uses `bjk-timestamp-format' for formatting the date/time."
 (global-set-key (kbd "C-x M-6") 'openpath-atc-derde)
 (global-set-key (kbd "C-x M-f") 'open-directory-in-system-viewer)
 
+(spacemacs/set-leader-keys "ok" '(find-file "~/.spacemacs.d/keybinds.el"))
+(spacemacs/set-leader-keys "ot" 'global-set-key)
 (spacemacs/set-leader-keys "ood" 'openpath-dropbox)
 (spacemacs/set-leader-keys "ooo" 'openpath-orgdir)
 (spacemacs/set-leader-keys "oob" 'openpath-blog)

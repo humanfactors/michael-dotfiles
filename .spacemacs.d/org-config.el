@@ -42,7 +42,18 @@
            :auto-sitemap t                ; Generate sitemap.org automagically...
            :sitemap-filename "index.org"
            :sitemap-title "Sitemap"         ; ... with title 'Sitemap'.
-           )))
+           )
+          ("hugo"
+           :publishing-directory "c:/Code/blog/static/code/"
+           :base-directory "~/Dropbox/org/"
+
+           :publishing-function org-html-publish-to-html
+           :exclude ".*"
+           :html-head "<link href=\"http://fonts.googleapis.com/css?family=Roboto+Slab:400,700|Inconsolata:400,700\" rel=\"stylesheet\" type=\"text/css\" />"
+           :html-head "<link href=\"css/org/style.css\" rel=\"stylesheet\" type=\"text/css\" />"
+           :include ["code-blog.org"])
+
+          ))
 
   (org-defkey org-mode-map [(meta return)] 'org-meta-return)
 
@@ -51,7 +62,7 @@
   (setq org-hierarchical-todo-statistics t)
   (setq org-bullets-mode nil)
   (setq org-support-shift-select t)
-
+  (setq org-cycle-separator-lines 1)
   (defun org-insert-subheading-end ()
     (interactive)
     (when (org-at-heading-p)
