@@ -17,14 +17,14 @@
 (require 'golden-ratio)
 
 ;; Ranger Mode
-(setq ranger-override-dired t)
-(setq ranger-show-literal t)
-(setq ranger-width-preview 0.55)
-(setq ranger-ignored-extensions '("mkv" "iso" "mp4"))
-(setq ranger-max-preview-size 10)
-(setq ranger-max-parent-width 0.12)
-(setq ranger-width-parents 0.12)
-(setq ranger-parent-depth 2)
+;; (setq ranger-override-dired t)
+;; (setq ranger-show-literal t)
+;; (setq ranger-width-preview 0.55)
+;; (setq ranger-ignored-extensions '("mkv" "iso" "mp4"))
+;; (setq ranger-max-preview-size 10)
+;; (setq ranger-max-parent-width 0.12)
+;; (setq ranger-width-parents 0.12)
+;; (setq ranger-parent-depth 2)
 
 ;; Markdown Mode
 (setq markdown-italic-underscore t)
@@ -52,25 +52,27 @@
       ("\\subsection{%s}" . "\\subsection*{%s}")))))
 
 ;; Add Rmarkdown as Markdown
-(add-to-list 'auto-mode-alist '("\\.Rmd\\'" . markdown-mode))
-(add-to-list 'auto-mode-alist '("\\.rmd\\'" . markdown-mode))
+(with-eval-after-load 'markdown-mode
+
+  (add-to-list 'auto-mode-alist '("\\.Rmd\\'" . markdown-mode))
+  (add-to-list 'auto-mode-alist '("\\.rmd\\'" . markdown-mode))
 
 ;; Fix inline codeblocks being split in markdown mode in Rmarkdown documents when filling
-;; (add-hook 'fill-nobreak-predicate
-;; #'markdown-inline-code-at-point-p)
-
+  (add-hook 'fill-nobreak-predicate
+            #'markdown-inline-code-at-point-p)
+  )
 
 ;; Default to insert git commit
 (add-hook 'git-commit-mode-hook 'evil-insert-state)
 
 
 ;; No more _ to <-
-(setq ess-disable-underscore-assign t)
 
 ;; no more fancy comments
 
 (add-hook 'ess-mode-hook
           (lambda()
+            (setq ess-disable-underscore-assign t)
             (setq ess-indent-level 2
                   tab-width 2)
             (setq ess-fancy-comments nil)
