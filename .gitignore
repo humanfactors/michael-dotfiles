@@ -6,3 +6,4 @@
 .spacemacs.d/init.el
 .fonts/
 fonts/
+.spacemacs.d/.spacemacs.env

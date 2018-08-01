@@ -1,16 +1,16 @@
-                                        ; Base Emacs bindings
 ;; (global-set-key (kbd "M-h") 'backward-kill-word)
 (global-set-key (kbd "M-<backspace>") 'backward-kill-word)
 (global-set-key (kbd "C-x k") 'spacemacs/kill-this-buffer)
+(global-set-key (kbd "C-x K") 'kill-buffer-and-window)
+
 (global-set-key (kbd "C-z") 'undo)
 (global-set-key (kbd "C-S-Z") 'redo)
+
 (define-key evil-motion-state-map (kbd "C-y") 'yank)
 
 (define-key global-map (kbd "s-=") 'text-scale-increase)
 (define-key global-map (kbd "s--") 'text-scale-decrease)
-(global-set-key (kbd "s-n") 'new-frame)
-(global-set-key (kbd "s-z") 'undo)
-(global-set-key (kbd "s-Z") 'undo-tree-redo)
+
 (global-set-key (kbd "M-<prior>") `previous-buffer)
 (global-set-key (kbd "M-<next>") `next-buffer)
 (global-set-key (kbd "s-<prior>") `previous-buffer)
@@ -18,7 +18,7 @@
 (global-set-key (kbd "M-D") 'spacemacs/duplicate-line-or-region)
 
 (global-set-key [f8] 'neotree-toggle)
-(global-set-key [f5] 'deft)
+
 (global-set-key [f12] 'magit)
 
 (global-set-key (kbd "C-{") 'backward-sentence)
@@ -27,18 +27,27 @@
 (global-set-key (kbd "C-c <backspace>") 'hungry-delete-backward)
 (global-set-key (kbd "C-c <deletechar>") 'hungry-delete-forward)
 
+(with-eval-after-load 'deft
+  (define-key deft-mode-map (kbd "C-<return>") 'deft-new-file)
+  (define-key deft-mode-map (kbd "C-c C-n") 'deft-new-filqe-named)
+  (define-key deft-mode-map (kbd "C-c C-m") 'deft-new-file-named)
+)
 ;; Orgmode Bindings
 
 (with-eval-after-load 'org
   (bind-key "C-c b" #'spacemacs/org-bold org-mode-map)
   (bind-key "C-c i" #'spacemacs/org-italic org-mode-map)
+  (spacemacs/set-leader-keys "aou" 'org-publish)
+  (spacemacs/set-leader-keys "aow" 'org-copy-subtree)
   (bind-key "C-c `" #'spacemacs/org-code org-mode-map))
 
 ;; Insert newline after current line
+
 (defun end-of-line-and-indented-new-line ()
   (interactive)
   (end-of-line)
   (newline-and-indent))
+
 (global-set-key (kbd "<S-return>") 'end-of-line-and-indented-new-line)
 
 
@@ -48,6 +57,7 @@
                             (define-key dired-mode-map (kbd "C-l") 'dired-up-directory)))
 
 
+(global-set-key (kbd "M-r") 'er/expand-region)
                                         ; Evil Configuration
 ;; Make evil-mode up/down operate in screen lines instead of logical lines
 (define-key evil-motion-state-map "j" 'evil-next-visual-line)
@@ -81,6 +91,10 @@ Uses `bjk-timestamp-format' for formatting the date/time."
   (interactive)
   (insert (format-time-string "%Y%m%d_%H%M" (current-time))))
 
+(spacemacs/declare-prefix "<f5>" "quick-utils-menu")
+(define-key global-map (kbd "<f5><f9>") 'easy-hugo)
+(define-key global-map (kbd "<f5><f5>") 'deft)
+
 
 
 ;; Spacemacs Related Functions
@@ -107,7 +121,7 @@ Uses `bjk-timestamp-format' for formatting the date/time."
   (interactive) (find-file "~/Dropbox/org/"))
 
 (defun openpath-blog ()
-  (interactive) (find-file "~/humanfactors/michael-blog/"))
+  (interactive) (find-file "~/blog"))
 
 (defun openpath-code ()
   (interactive) (find-file "~/Code/"))
@@ -134,6 +148,8 @@ Uses `bjk-timestamp-format' for formatting the date/time."
 (global-set-key (kbd "C-x M-6") 'openpath-atc-derde)
 (global-set-key (kbd "C-x M-f") 'open-directory-in-system-viewer)
 
+(spacemacs/set-leader-keys "ok" '(find-file "~/.spacemacs.d/keybinds.el"))
+(spacemacs/set-leader-keys "ot" 'global-set-key)
 (spacemacs/set-leader-keys "ood" 'openpath-dropbox)
 (spacemacs/set-leader-keys "ooo" 'openpath-orgdir)
 (spacemacs/set-leader-keys "oob" 'openpath-blog)
