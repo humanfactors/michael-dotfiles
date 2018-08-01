@@ -44,7 +44,8 @@
 
 (define-key evil-emacs-state-map (kbd "C-o") (lambda () (interactive)(beginning-of-line)(open-line 1))) ; vi-like line insertion
 
-(bind-key "C-l" 'dired-up-directory dired-mode-map)
+(eval-after-load "dired" '(progn
+                            (define-key dired-mode-map (kbd "C-l") 'dired-up-directory)))
 
 
                                         ; Evil Configuration
