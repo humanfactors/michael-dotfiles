@@ -110,3 +110,8 @@
 (with-eval-after-load 'deft
   (define-key deft-mode-map (kbd "C-<return>") 'deft-new-file)
   )
+
+
+(setq projectile-switch-project-action #'projectile-dired)
+(setq projectile-switch-project-action #'projectile-find-dir)
+(setq projectile-find-dir-includes-top-level t)
