@@ -1,16 +1,16 @@
-                                        ; Base Emacs bindings
 ;; (global-set-key (kbd "M-h") 'backward-kill-word)
 (global-set-key (kbd "M-<backspace>") 'backward-kill-word)
 (global-set-key (kbd "C-x k") 'spacemacs/kill-this-buffer)
+(global-set-key (kbd "C-x K") 'kill-buffer-and-window)
+
 (global-set-key (kbd "C-z") 'undo)
 (global-set-key (kbd "C-S-Z") 'redo)
+
 (define-key evil-motion-state-map (kbd "C-y") 'yank)
 
 (define-key global-map (kbd "s-=") 'text-scale-increase)
 (define-key global-map (kbd "s--") 'text-scale-decrease)
-(global-set-key (kbd "s-n") 'new-frame)
-(global-set-key (kbd "s-z") 'undo)
-(global-set-key (kbd "s-Z") 'undo-tree-redo)
+
 (global-set-key (kbd "M-<prior>") `previous-buffer)
 (global-set-key (kbd "M-<next>") `next-buffer)
 (global-set-key (kbd "s-<prior>") `previous-buffer)
@@ -27,6 +27,11 @@
 (global-set-key (kbd "C-c <backspace>") 'hungry-delete-backward)
 (global-set-key (kbd "C-c <deletechar>") 'hungry-delete-forward)
 
+(with-eval-after-load 'deft
+  (define-key deft-mode-map (kbd "C-<return>") 'deft-new-file)
+  (define-key deft-mode-map (kbd "C-c C-n") 'deft-new-filqe-named)
+  (define-key deft-mode-map (kbd "C-c C-m") 'deft-new-file-named)
+)
 ;; Orgmode Bindings
 
 (with-eval-after-load 'org
@@ -37,18 +42,22 @@
   (bind-key "C-c `" #'spacemacs/org-code org-mode-map))
 
 ;; Insert newline after current line
+
 (defun end-of-line-and-indented-new-line ()
   (interactive)
   (end-of-line)
   (newline-and-indent))
+
 (global-set-key (kbd "<S-return>") 'end-of-line-and-indented-new-line)
 
 
 (define-key evil-emacs-state-map (kbd "C-o") (lambda () (interactive)(beginning-of-line)(open-line 1))) ; vi-like line insertion
 
-;; (bind-key "C-l" 'dired-up-directory dired-mode-map)
+(eval-after-load "dired" '(progn
+                            (define-key dired-mode-map (kbd "C-l") 'dired-up-directory)))
 
 
+(global-set-key (kbd "M-r") 'er/expand-region)
                                         ; Evil Configuration
 ;; Make evil-mode up/down operate in screen lines instead of logical lines
 (define-key evil-motion-state-map "j" 'evil-next-visual-line)
