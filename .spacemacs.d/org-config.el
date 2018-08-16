@@ -1,6 +1,7 @@
 ;; Org Directory
 
-
+(add-hook 'org-mode-hook
+          'auto-fill-mode)
 ;; Org Configuration
 (with-eval-after-load 'org
   ;; (setq org-agenda-files '("~/Dropbox/org/"))
@@ -56,21 +57,24 @@
   (setq org-bullets-mode nil)
   (setq org-support-shift-select t)
   (setq org-cycle-separator-lines 1)
+
   (defun org-insert-subheading-end ()
     (interactive)
     (when (org-at-heading-p)
       (end-of-line)
       (call-interactively 'org-insert-subheading )))
 
-  (add-hook 'org-mode-hook (lambda ()
-                             (spacemacs/set-leader-keys "obr" 'org-tree-open-in-right-frame)
-                             (spacemacs/set-leader-keys "obb" 'org-tree-to-indirect-buffer)))
 
   (defun org-tree-open-in-right-frame ()
     (interactive)
     (org-tree-to-indirect-buffer)
     (windmove-right))
+
   (define-key org-mode-map (kbd "C-M-<return>") 'org-insert-subheading-end)
+
+  (add-hook 'org-mode-hook (lambda ()
+                             (spacemacs/set-leader-keys "obr" 'org-tree-open-in-right-frame)
+                             (spacemacs/set-leader-keys "obb" 'org-tree-to-indirect-buffer)))
 
   ;; Capture templates
   (setq org-capture-templates
@@ -92,5 +96,5 @@
 
           ))
   (setq org-todo-keywords
-        '((sequence "TODO" "REMEMBER" "WAITING" "|" "DONE" "CANCELLED")))
+        '((sequence "TODO" "REMEMBER" "|" "DONE" "WAITING" "CANCELLED")))
   )
