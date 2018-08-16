@@ -3,13 +3,8 @@
 (add-hook 'org-mode-hook
           'auto-fill-mode)
 ;; Org Configuration
-(with-eval-after-load 'org
-  ;; (setq org-agenda-files '("~/Dropbox/org/"))
-  ;; (setq org-agenda-custom-commands
-  ;; '(("c" "Simple agenda view"
-  ;; ((agenda "")
-  ;; (alltodo "")))))
 
+(with-eval-after-load 'ox-latex
   (add-to-list 'org-latex-classes
                '("meetingmins"
                  "\\documentclass{meetingmins}"
@@ -17,7 +12,15 @@
                  ("\\subsection{%s}" . "\\subsection*{%s}")
                  ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
                  ("\\paragraph{%s}" . "\\paragraph*{%s}")
-                 ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
+                 ("\\subparagraph{%s}" . "\\subparagraph*{%s}"))))
+
+
+(with-eval-after-load 'org
+  ;; (setq org-agenda-files '("~/Dropbox/org/"))
+  ;; (setq org-agenda-custom-commands
+  ;; '(("c" "Simple agenda view"
+  ;; ((agenda "")
+  ;; (alltodo "")))))
   ;; Inline code evaluation
   (setq org-confirm-babel-evaluate nil)
   ;; (org-babel-do-load-languages

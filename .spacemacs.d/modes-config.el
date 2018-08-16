@@ -51,11 +51,14 @@
       ("\\section{%s}" . "\\section*{%s}")
       ("\\subsection{%s}" . "\\subsection*{%s}")))))
 
+
+(add-to-list 'auto-mode-alist '("\\.Rmd\\'" . markdown-mode))
+(add-to-list 'auto-mode-alist '("\\.rmd\\'" . markdown-mode))
+
+
 ;; Add Rmarkdown as Markdown
 (with-eval-after-load 'markdown-mode
 
-  (add-to-list 'auto-mode-alist '("\\.Rmd\\'" . markdown-mode))
-  (add-to-list 'auto-mode-alist '("\\.rmd\\'" . markdown-mode))
 
 ;; Fix inline codeblocks being split in markdown mode in Rmarkdown documents when filling
   (add-hook 'fill-nobreak-predicate
@@ -65,6 +68,7 @@
 (with-eval-after-load 'projectile
   (setq projectile-switch-project #'projectile-find-dir)
   (setq projectile-find-dir-includes-top-level t))
+  
 ;; Default to insert git commit
 (add-hook 'git-commit-mode-hook 'evil-insert-state)
 
