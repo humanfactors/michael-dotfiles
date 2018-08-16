@@ -10,7 +10,14 @@
   ;; ((agenda "")
   ;; (alltodo "")))))
 
-
+  (add-to-list 'org-latex-classes
+               '("meetingmins"
+                 "\\documentclass{meetingmins}"
+                 ("\\section{%s}" . "\\section*{%s}")
+                 ("\\subsection{%s}" . "\\subsection*{%s}")
+                 ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
+                 ("\\paragraph{%s}" . "\\paragraph*{%s}")
+                 ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
   ;; Inline code evaluation
   (setq org-confirm-babel-evaluate nil)
   ;; (org-babel-do-load-languages
