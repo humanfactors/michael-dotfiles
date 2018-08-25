@@ -17,14 +17,14 @@
 (require 'golden-ratio)
 
 ;; Ranger Mode
-(setq ranger-override-dired t)
-(setq ranger-show-literal t)
-(setq ranger-width-preview 0.55)
-(setq ranger-ignored-extensions '("mkv" "iso" "mp4"))
-(setq ranger-max-preview-size 10)
-(setq ranger-max-parent-width 0.12)
-(setq ranger-width-parents 0.12)
-(setq ranger-parent-depth 2)
+;; (setq ranger-override-dired t)
+;; (setq ranger-show-literal t)
+;; (setq ranger-width-preview 0.55)
+;; (setq ranger-ignored-extensions '("mkv" "iso" "mp4"))
+;; (setq ranger-max-preview-size 10)
+;; (setq ranger-max-parent-width 0.12)
+;; (setq ranger-width-parents 0.12)
+;; (setq ranger-parent-depth 2)
 
 ;; Markdown Mode
 (setq markdown-italic-underscore t)
@@ -51,26 +51,42 @@
       ("\\section{%s}" . "\\section*{%s}")
       ("\\subsection{%s}" . "\\subsection*{%s}")))))
 
-;; Add Rmarkdown as Markdown
+
 (add-to-list 'auto-mode-alist '("\\.Rmd\\'" . markdown-mode))
 (add-to-list 'auto-mode-alist '("\\.rmd\\'" . markdown-mode))
 
-;; Fix inline codeblocks being split in markdown mode in Rmarkdown documents when filling
+
+;; Add Rmarkdown as Markdown
 (with-eval-after-load 'markdown-mode
+
+
+;; Fix inline codeblocks being split in markdown mode in Rmarkdown documents when filling
   (add-hook 'fill-nobreak-predicate
-            #'markdown-inline-code-at-point-p))
+            #'markdown-inline-code-at-point-p)
+  )
 
 (with-eval-after-load 'projectile
   (setq projectile-switch-project #'projectile-find-dir)
   (setq projectile-find-dir-includes-top-level t))
+  
 ;; Default to insert git commit
 (add-hook 'git-commit-mode-hook 'evil-insert-state)
 
 
 ;; No more _ to <-
-(setq ess-disable-underscore-assign t)
+(add-hook 'ess-mode-hook
+          (lambda()
+            (setq ess-disable-underscore-assign t)
+            (setq ess-indent-level 2
+                  tab-width 2)
+            (setq ess-fancy-comments nil)
+            (setq ess-indent-with-fancy-comments nil)))
+
 
 (add-hook 'easy-hugo-mode-hook 'cesco/easy-hugo)
+;; no more fancy comments
+
+              
 (with-eval-after-load 'easy-hugo
 ;; Easy Hugo
   (defun cesco/easy-hugo ()
@@ -116,3 +132,8 @@
 (with-eval-after-load 'deft
   (define-key deft-mode-map (kbd "C-<return>") 'deft-new-file)
   )
+
+
+(setq projectile-switch-project-action #'projectile-dired)
+(setq projectile-switch-project-action #'projectile-find-dir)
+(setq projectile-find-dir-includes-top-level t)
