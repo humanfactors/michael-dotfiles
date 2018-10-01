@@ -28,9 +28,9 @@
 (menu-bar-mode 1)
 
 ;; Scrolling
-(setq mouse-wheel-scroll-amount '(1 ((shift) . 1))) ;; one line at a time
+;; (setq mouse-wheel-scroll-amount '(1 ((shift) . 1))) ;; one line at a time
 (setq mouse-wheel-progressive-speed nil) ;; don't accelerate scrolling
-(setq mouse-wheel-follow-mouse 't) ;; scroll window under mouse
+;; (setq mouse-wheel-follow-mouse 't) ;; scroll window under mouse
 (setq scroll-step 1) ;; keyboard scroll one line at a time
 
 ;; Link Behaviour
@@ -55,8 +55,8 @@
 (global-set-key (kbd "DEL") 'backward-delete-char)
 
 ;; Search settings
-(define-key global-map [remap isearch-forward] 'isearch-forward-regexp)
-(define-key global-map [remap isearch-backward] 'isearch-backward-regexp)
+;; (define-key global-map [remap isearch-forward] 'isearch-forward-regexp)
+;; (define-key global-map [remap isearch-backward] 'isearch-backward-regexp)
 
 ;; M-up and M-down move lines
 (defun move-line (n)
@@ -149,4 +149,16 @@
         (w32explore (expand-file-name default-directory))
       (error "No `default-directory' to open"))))
 
+;; (with-eval-after-load 'company
+;; ;; Add yasnippet support for all company backends
+;; ;; https://github.com/syl20bnr/spacemacs/pull/179
+;; (defvar company-mode/enable-yas t
+;;   "Enable yasnippet for all backends.")
 
+;; (defun company-mode/backend-with-yas (backend)
+;;   (if (or (not company-mode/enable-yas) (and (listp backend) (member 'company-yasnippet backend)))
+;;       backend
+;;     (append (if (consp backend) backend (list backend))
+;;             '(:with company-yasnippet))))
+
+;; (setq company-backends (mapcar #'company-mode/backend-with-yas company-backends))

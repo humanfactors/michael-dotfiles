@@ -1,5 +1,4 @@
 ;; Python
-(setq python-shell-interpreter "python")
 (setq python-shell-interpreter-args "")
 (setq python-tab-width 2)
 (setq tab-width 2)
@@ -12,9 +11,12 @@
 (global-set-key (kbd "C->") 'mc/mark-next-like-this)
 (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
 
-;; Shell Config
-;; (setq explicit-shell-file-name "/bin/bash")
-;; (setq explicit-shell-file-name "c:/Windows/System32/bash.exe")
+(when-system gnu/linux
+  (setq python-shell-interpreter "python3"))
+
+(when-system windows-nt
+  (setq python-shell-interpreter "python"))
+
 ;; Pandoc
 ;; (setq org-pandoc-options-for-markdown '((atx-headers . t)))
 ;; (setq org-pandoc-options-for-latex-pdf '((latex-engine . "xelatex")))
@@ -23,14 +25,14 @@
 (require 'golden-ratio)
 
 ;; Ranger Mode
-(setq ranger-override-dired t)
-(setq ranger-show-literal t)
-(setq ranger-width-preview 0.55)
-(setq ranger-ignored-extensions '("mkv" "iso" "mp4"))
-(setq ranger-max-preview-size 10)
-(setq ranger-max-parent-width 0.12)
-(setq ranger-width-parents 0.12)
-(setq ranger-parent-depth 2)
+;; (setq ranger-override-dired t)
+;; (setq ranger-show-literal t)
+;; (setq ranger-width-preview 0.55)
+;; (setq ranger-ignored-extensions '("mkv" "iso" "mp4"))
+;; (setq ranger-max-preview-size 10)
+;; (setq ranger-max-parent-width 0.12)
+;; (setq ranger-width-parents 0.12)
+;; (setq ranger-parent-depth 2)
 
 ;; Markdown Mode
 (setq markdown-italic-underscore t)
@@ -57,58 +59,80 @@
       ("\\section{%s}" . "\\section*{%s}")
       ("\\subsection{%s}" . "\\subsection*{%s}")))))
 
-;; Add Rmarkdown as Markdown
+
 (add-to-list 'auto-mode-alist '("\\.Rmd\\'" . markdown-mode))
 (add-to-list 'auto-mode-alist '("\\.rmd\\'" . markdown-mode))
 
-;; Fix inline codeblocks being split in markdown mode in Rmarkdown documents when filling
+
+;; Add Rmarkdown as Markdown
 (with-eval-after-load 'markdown-mode
+
+
+;; Fix inline codeblocks being split in markdown mode in Rmarkdown documents when filling
   (add-hook 'fill-nobreak-predicate
-            #'markdown-inline-code-at-point-p))
+            #'markdown-inline-code-at-point-p)
+  )
 
 (with-eval-after-load 'projectile
   (setq projectile-switch-project #'projectile-find-dir)
   (setq projectile-find-dir-includes-top-level t))
+  
 ;; Default to insert git commit
 (add-hook 'git-commit-mode-hook 'evil-insert-state)
 
 
 ;; No more _ to <-
-(setq ess-disable-underscore-assign t)
-
-(with-eval-after-load 'easy-hugo
-
-;; Easy Hugo
-(defun cesco/easy-hugo ()
-  (interactive)
-  (evil-define-key
-    (list 'normal 'insert 'visual 'motion)
-    easy-hugo-mode-map
-    "n" 'easy-hugo-newpost
-    "D" 'easy-hugo-article
-    "p" 'easy-hugo-preview
-    "P" 'easy-hugo-publish
-    "o" 'easy-hugo-open
-    "d" 'easy-hugo-delete
-    "e" 'easy-hugo-open
-    "c" 'easy-hugo-open-config
-    "f" 'easy-hugo-open
-    "N" 'easy-hugo-no-help
-    "v" 'easy-hugo-view
-    "r" 'easy-hugo-refresh
-    "g" 'easy-hugo-refresh
-    "s" 'easy-hugo-sort-time
-    "S" 'easy-hugo-sort-char
-    "G" 'easy-hugo-github-deploy
-    "A" 'easy-hugo-amazon-s3-deploy
-    "C" 'easy-hugo-google-cloud-storage-deploy
-    "q" 'evil-delete-buffer
-    (kbd "TAB") 'easy-hugo-open
-    (kbd "RET") 'easy-hugo-preview))
+(add-hook 'ess-mode-hook
+          (lambda()
+            (setq ess-disable-underscore-assign t)
+            (setq ess-indent-level 2
+                  tab-width 2)
+            (setq ess-fancy-comments nil)
+            (setq ess-indent-with-fancy-comments nil)))
 
 
 (add-hook 'easy-hugo-mode-hook 'cesco/easy-hugo)
+;; no more fancy comments
+
+              
+(with-eval-after-load 'easy-hugo
+;; Easy Hugo
+  (defun cesco/easy-hugo ()
+    (interactive)
+    (evil-define-key
+      (list 'normal 'insert 'visual 'motion)
+      easy-hugo-mode-map
+      "n" 'easy-hugo-newpost
+      "D" 'easy-hugo-article
+      "p" 'easy-hugo-preview
+      "P" 'easy-hugo-publish
+      "o" 'easy-hugo-open
+      "d" 'easy-hugo-delete
+      "e" 'easy-hugo-open
+      "c" 'easy-hugo-open-config
+      "f" 'easy-hugo-open
+      "N" 'easy-hugo-no-help
+      "v" 'easy-hugo-view
+      "r" 'easy-hugo-refresh
+      "g" 'easy-hugo-refresh
+      "s" 'easy-hugo-sort-time
+      "S" 'easy-hugo-sort-char
+      "G" 'easy-hugo-github-deploy
+      "A" 'easy-hugo-amazon-s3-deploy
+      "C" 'easy-hugo-google-cloud-storage-deploy
+      "q" 'evil-delete-buffer
+      (kbd "TAB") 'easy-hugo-open
+      (kbd "RET") 'easy-hugo-preview))
 )
+
+
+(setq easy-hugo-basedir "~/blog/"
+      easy-hugo-postdir "content/blog"
+      easy-hugo-url "http://michael.humanfactors.io"
+      easy-hugo-preview-url "http://localhost:1313"
+      easy-hugo-default-picture-directory "~/Pictures"
+      easy-hugo-default-ext ".md"
+      easy-hugo-previewtime "20")
 
 (setq doc-view-continuous t)
 
@@ -116,3 +140,8 @@
 (with-eval-after-load 'deft
   (define-key deft-mode-map (kbd "C-<return>") 'deft-new-file)
   )
+
+
+(setq projectile-switch-project-action #'projectile-dired)
+(setq projectile-switch-project-action #'projectile-find-dir)
+(setq projectile-find-dir-includes-top-level t)

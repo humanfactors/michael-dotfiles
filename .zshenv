@@ -9,7 +9,7 @@ export ZSH=~/.oh-my-zsh
 ZSH_THEME="spaceship"
 
 # ZSH Plugins
-plugins=(git zsh-autosuggestions colored-man golang zsh-syntax-highlighting colored-man python)
+plugins=(git zsh-autosuggestions colored-man zsh-syntax-highlighting colored-man python emacs debian)
 
 # User configuration
 source $ZSH/oh-my-zsh.sh
