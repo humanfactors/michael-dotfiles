@@ -82,6 +82,7 @@ Uses `bjk-timestamp-format' for formatting the date/time."
   (interactive)
   (insert (format-time-string "%Y%m%d_%H%M" (current-time))))
 
+(global-set-key "\C-x\M-s" `michael-filetimestamp)
 (spacemacs/declare-prefix "<f5>" "quick-utils-menu")
 (define-key global-map (kbd "<f5><f9>") 'easy-hugo)
 (define-key global-map (kbd "<f5><f5>") 'deft)
