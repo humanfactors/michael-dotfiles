@@ -3,6 +3,14 @@
 (setq python-tab-width 2)
 (setq tab-width 2)
 
+;; Go mode
+;; Mulitple Cursors
+
+(require 'multiple-cursors)
+(global-set-key (kbd "<f5> SPC") 'mc/edit-lines)
+(global-set-key (kbd "C->") 'mc/mark-next-like-this)
+(global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
+
 (when-system gnu/linux
   (setq python-shell-interpreter "python3"))
 
@@ -74,68 +82,66 @@
 
 
 ;; No more _ to <-
-
-;; no more fancy comments
-
 (add-hook 'ess-mode-hook
-          (lambda()
-            (setq ess-disable-underscore-assign t)
-            (setq ess-indent-level 2
-                  tab-width 2)
-            (setq ess-fancy-comments nil)
-            (setq ess-indent-with-fancy-comments nil))
-
-          (defun then_R_operator ()
-            "R - %>% operator or 'then' pipe operator"
-            (interactive)
-            (just-one-space 1)
-            (insert "%>%")
-            (reindent-then-newline-and-indent))
-          (define-key (kbd "C-S-M") 'then_R_operator)
-          (define-key (kbd "C-S-M") 'then_R_operator)
-
-          )
+    (lambda()
+      (setq ess-disable-underscore-assign t)
+      (setq ess-indent-level 2
+            tab-width 2)
+      (setq ess-fancy-comments nil)
+      (setq ess-indent-with-fancy-comments nil))
+    (defun then_R_operator ()
+      "R - %>% operator or 'then' pipe operator"
+      (interactive)
+      (just-one-space 1)
+      (insert "%>%")
+      (reindent-then-newline-and-indent))
+    (define-key (kbd "C-S-M") 'then_R_operator)
+    (define-key (kbd "C-S-M") 'then_R_operator))
               
 (with-eval-after-load 'easy-hugo
-
 ;; Easy Hugo
-(defun cesco/easy-hugo ()
-  (interactive)
-  (evil-define-key
-    (list 'normal 'insert 'visual 'motion)
-    easy-hugo-mode-map
-    "n" 'easy-hugo-newpost
-    "D" 'easy-hugo-article
-    "p" 'easy-hugo-preview
-    "P" 'easy-hugo-publish
-    "o" 'easy-hugo-open
-    "d" 'easy-hugo-delete
-    "e" 'easy-hugo-open
-    "c" 'easy-hugo-open-config
-    "f" 'easy-hugo-open
-    "N" 'easy-hugo-no-help
-    "v" 'easy-hugo-view
-    "r" 'easy-hugo-refresh
-    "g" 'easy-hugo-refresh
-    "s" 'easy-hugo-sort-time
-    "S" 'easy-hugo-sort-char
-    "G" 'easy-hugo-github-deploy
-    "A" 'easy-hugo-amazon-s3-deploy
-    "C" 'easy-hugo-google-cloud-storage-deploy
-    "q" 'evil-delete-buffer
-    (kbd "TAB") 'easy-hugo-open
-    (kbd "RET") 'easy-hugo-preview))
-
-
-(add-hook 'easy-hugo-mode-hook 'cesco/easy-hugo)
+  (defun cesco/easy-hugo ()
+    (interactive)
+    (evil-define-key
+      (list 'normal 'insert 'visual 'motion)
+      easy-hugo-mode-map
+      "n" 'easy-hugo-newpost
+      "D" 'easy-hugo-article
+      "p" 'easy-hugo-preview
+      "P" 'easy-hugo-publish
+      "o" 'easy-hugo-open
+      "d" 'easy-hugo-delete
+      "e" 'easy-hugo-open
+      "c" 'easy-hugo-open-config
+      "f" 'easy-hugo-open
+      "N" 'easy-hugo-no-help
+      "v" 'easy-hugo-view
+      "r" 'easy-hugo-refresh
+      "g" 'easy-hugo-refresh
+      "s" 'easy-hugo-sort-time
+      "S" 'easy-hugo-sort-char
+      "G" 'easy-hugo-github-deploy
+      "A" 'easy-hugo-amazon-s3-deploy
+      "C" 'easy-hugo-google-cloud-storage-deploy
+      "q" 'evil-delete-buffer
+      (kbd "TAB") 'easy-hugo-open
+      (kbd "RET") 'easy-hugo-preview))
 )
+
+
+(setq easy-hugo-basedir "~/blog/"
+      easy-hugo-postdir "content/blog"
+      easy-hugo-url "http://michael.humanfactors.io"
+      easy-hugo-preview-url "http://localhost:1313"
+      easy-hugo-default-picture-directory "~/Pictures"
+      easy-hugo-default-ext ".md"
+      easy-hugo-previewtime "20")
 
 (setq doc-view-continuous t)
 
 
 (with-eval-after-load 'deft
-  (define-key deft-mode-map (kbd "C-<return>") 'deft-new-file)
-  )
+  (define-key deft-mode-map (kbd "C-<return>") 'deft-new-file))
 
 
 (setq projectile-switch-project-action #'projectile-dired)
