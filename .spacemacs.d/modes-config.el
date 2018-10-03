@@ -83,7 +83,18 @@
             (setq ess-indent-level 2
                   tab-width 2)
             (setq ess-fancy-comments nil)
-            (setq ess-indent-with-fancy-comments nil)))
+            (setq ess-indent-with-fancy-comments nil))
+
+          (defun then_R_operator ()
+            "R - %>% operator or 'then' pipe operator"
+            (interactive)
+            (just-one-space 1)
+            (insert "%>%")
+            (reindent-then-newline-and-indent))
+          (define-key (kbd "C-S-M") 'then_R_operator)
+          (define-key (kbd "C-S-M") 'then_R_operator)
+
+          )
               
 (with-eval-after-load 'easy-hugo
 
@@ -130,3 +141,7 @@
 (setq projectile-switch-project-action #'projectile-dired)
 (setq projectile-switch-project-action #'projectile-find-dir)
 (setq projectile-find-dir-includes-top-level t)
+
+(with-eval-after-load 'helm-bibtex
+  (setq helm-bibtex-cite-default-command 'bibtex-completion-insert-citation)
+ )
