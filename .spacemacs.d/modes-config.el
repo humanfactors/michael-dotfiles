@@ -82,6 +82,7 @@
 
 
 ;; No more _ to <-
+(with-eval-after-load 'ess
 (add-hook 'ess-mode-hook
     (lambda()
       (setq ess-disable-underscore-assign t)
@@ -95,9 +96,9 @@
       (just-one-space 1)
       (insert "%>%")
       (reindent-then-newline-and-indent))
-    (define-key (kbd "C-S-M") 'then_R_operator)
-    (define-key (kbd "C-S-M") 'then_R_operator))
-              
+    (define-key ess-mode-map (kbd "C-S-M") 'then_R_operator)))
+
+
 (with-eval-after-load 'easy-hugo
 ;; Easy Hugo
   (defun cesco/easy-hugo ()
