@@ -82,19 +82,23 @@
 
 
 ;; No more _ to <-
+(with-eval-after-load 'ess
 (add-hook 'ess-mode-hook
-          (lambda()
-            (setq ess-disable-underscore-assign t)
-            (setq ess-indent-level 2
-                  tab-width 2)
-            (setq ess-fancy-comments nil)
-            (setq ess-indent-with-fancy-comments nil)))
+    (lambda()
+      (setq ess-disable-underscore-assign t)
+      (setq ess-indent-level 2
+            tab-width 2)
+      (setq ess-fancy-comments nil)
+      (setq ess-indent-with-fancy-comments nil))
+    (defun then_R_operator ()
+      "R - %>% operator or 'then' pipe operator"
+      (interactive)
+      (just-one-space 1)
+      (insert "%>%")
+      (reindent-then-newline-and-indent))
+    (define-key ess-mode-map (kbd "C-S-M") 'then_R_operator)))
 
 
-(add-hook 'easy-hugo-mode-hook 'cesco/easy-hugo)
-;; no more fancy comments
-
-              
 (with-eval-after-load 'easy-hugo
 ;; Easy Hugo
   (defun cesco/easy-hugo ()
@@ -138,10 +142,13 @@
 
 
 (with-eval-after-load 'deft
-  (define-key deft-mode-map (kbd "C-<return>") 'deft-new-file)
-  )
+  (define-key deft-mode-map (kbd "C-<return>") 'deft-new-file))
 
 
 (setq projectile-switch-project-action #'projectile-dired)
 (setq projectile-switch-project-action #'projectile-find-dir)
 (setq projectile-find-dir-includes-top-level t)
+
+(with-eval-after-load 'helm-bibtex
+  (setq helm-bibtex-cite-default-command 'bibtex-completion-insert-citation)
+ )

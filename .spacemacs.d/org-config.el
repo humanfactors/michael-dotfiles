@@ -98,6 +98,10 @@
            ;; Prompt for tag and language
            "** %^{Snippet description}\t%^g\n#+BEGIN_SRC %^{language}\n%?\n#+END_SRC\n")
 
+          ("e" "EnduranceJournal" entry (file+datetree 
+                                         "~/Dropbox/org/endurance-diary.org") 
+           "** %U - %^{Activity}  :TIME:")
+
           ("d" "Thesis Discussion Idea" entry (file+headline "~/Dropbox/Thesis/thesis.org" "Discussion Ideas")
            "** %^{Idea Title}\n %?%i \n")
 

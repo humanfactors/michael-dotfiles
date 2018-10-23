@@ -164,3 +164,18 @@ Uses `bjk-timestamp-format' for formatting the date/time."
 (spacemacs/set-leader-keys "o TAB" 'open-directory-in-system-viewer)
 
 
+(defmacro define-openpath-spacemacs (pathname dir keybind)
+  (let ((func (intern (concat "openpath-" pathname))))
+    `(defun ,func ()
+       (interactive) (find-file ,dir))
+    `(spacemacs/set-leader-keys ,keybind ',func))
+  )
+
+(defmacro define-openpath-emacs (pathname dir keybind)
+  (let ((func (intern (concat "openpath-" pathname))))
+    `(defun ,func ()
+       (interactive) (find-file ,dir))
+    `(spacemacs/set-leader-keys ,keybind ',func))
+  )
+
+(define-openpath-emacs "dropboxmain" "~/Dropbox" "ooz")
