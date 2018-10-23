@@ -1,3 +1,6 @@
+;; Icons & doom
+(setq neo-theme 'icons)
+
 ;; (setq cua-mode nil)
 (setq evil-normal-state-cursor 'square)
 ;; Text Editing and Selection Configuration
