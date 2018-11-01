@@ -15,7 +15,7 @@ With time I will update all my configurations and try and make this automated.
 
 The main load for my Spacemacs (after creating a symlink) is the following
 
-#+BEGIN_SRC 
+#+BEGIN_SRC emacs-lisp
 (defun dotspacemacs/user-init ()
   "Initialization for user code:
 This function is called immediately after `dotspacemacs/init', before layer
