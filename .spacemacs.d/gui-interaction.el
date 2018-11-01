@@ -134,12 +134,6 @@
 (global-set-key (kbd "M-C-}") 'move-border-up)
 (global-set-key (kbd "M-C-{") 'move-border-down)
 
-(defmacro when-system (type &rest body)
-  "Evaluate BODY if `system-type' equals TYPE."
-  (declare (indent defun))
-  `(when (eq system-type ',type)
-     ,@body))
-
 
 (defun open-directory-in-system-viewer ()
   (interactive)
