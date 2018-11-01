@@ -13,6 +13,38 @@ With time I will update all my configurations and try and make this automated.
 ** Spacemacs Configuration
    [[file:docs/spacemacs-editing-style-hybrid.png]]
 
+The main load for my Spacemacs (after creating a symlink) is the following
+
+#+BEGIN_SRC 
+(defun dotspacemacs/user-init ()
+  "Initialization for user code:
+This function is called immediately after `dotspacemacs/init', before layer
+configuration.
+It is mostly for variables that should be set before packages are loaded.
+If you are unsure, try setting them in `dotspacemacs/user-config' first."
+  (setq warning-minimum-level :emergency)
+  (setq evil-toggle-key "C-|")
+  )
+
+(defun dotspacemacs/user-config ()
+  "Configuration function for user code.
+This function is called at the very end of Spacemacs initialization after
+layers configuration.
+This is the place where most of your configurations should be done. Unless it is
+explicitly specified that a variable should be set before a package is loaded,
+you should place your code here."
+    (defun load-directory (dir)
+      (let ((load-it (lambda (f)
+		       (load-file (concat (file-name-as-directory dir) f)))
+		     ))
+	(mapc load-it (directory-files dir nil "\\.el$"))))
+  (load-directory "~/.spacemacs.d/")
+    ;; (require 'init-f2)
+  )
+
+
+#+END_SRC
+
 
 My spacemacs configuration is oriented around hybrid users. Importantly, I bind =C-S-P= to the leader key in Emacs editing style. The .spacemacs.d/ is broken down into several modules which are loaded in my Spacemacs =init.el=. Most of the functionality from these can be loaded directly into a standard Emacs 25 install - though this does require some manual steps. 
 
