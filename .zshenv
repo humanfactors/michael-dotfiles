@@ -75,4 +75,4 @@ alias localip="ip a | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([
 #echo -e "${GREEN}new note is ${CYAN}nn"
 #echo -e "${GREEN}search notes with ${CYAN}ns"
 
-
+alias command_history="history | sed 's/^[ ]*[0-9]\+[ ]*//'"
