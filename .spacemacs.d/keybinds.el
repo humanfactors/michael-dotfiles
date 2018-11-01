@@ -91,6 +91,7 @@ Uses `bjk-timestamp-format' for formatting the date/time."
   (interactive)
   (insert (format-time-string "%Y%m%d_%H%M" (current-time))))
 
+(global-set-key "\C-x\M-s" `michael-filetimestamp)
 (spacemacs/declare-prefix "<f5>" "quick-utils-menu")
 (define-key global-map (kbd "<f5><f9>") 'easy-hugo)
 (define-key global-map (kbd "<f5><f5>") 'deft)
@@ -163,3 +164,18 @@ Uses `bjk-timestamp-format' for formatting the date/time."
 (spacemacs/set-leader-keys "o TAB" 'open-directory-in-system-viewer)
 
 
+(defmacro define-openpath-spacemacs (pathname dir keybind)
+  (let ((func (intern (concat "openpath-" pathname))))
+    `(defun ,func ()
+       (interactive) (find-file ,dir))
+    `(spacemacs/set-leader-keys ,keybind ',func))
+  )
+
+(defmacro define-openpath-emacs (pathname dir keybind)
+  (let ((func (intern (concat "openpath-" pathname))))
+    `(defun ,func ()
+       (interactive) (find-file ,dir))
+    `(spacemacs/set-leader-keys ,keybind ',func))
+  )
+
+(define-openpath-emacs "dropboxmain" "~/Dropbox" "ooz")
