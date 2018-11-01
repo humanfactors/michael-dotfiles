@@ -1,0 +1,155 @@
+// Place your key bindings in this file to overwrite the defaults
+[
+    {
+        "key": "ctrl+k alt+r",
+        "command": "code-runner.run"
+    },
+    {
+        "key": "ctrl+k ctrl+b",
+        "command": "bookmarks.toggle",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "ctrl+alt+k",
+        "command": "-bookmarks.toggle",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "ctrl+alt+l",
+        "command": "-bookmarks.jumpToNext",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "ctrl+alt+j",
+        "command": "-bookmarks.jumpToPrevious",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "ctrl-shift-m",
+        "command": "editor.action.insertSnippet",
+        "args": {
+            "snippet": "%>%"
+        },
+        "when": "editorLangId == 'r'"
+    },
+    {
+        "key": "ctrl-'",
+        "command": "editor.action.insertSnippet",
+        "args": {
+            "snippet": "- [ ] "
+        },
+        "when": "editorLangId == 'markdown'"
+    },
+    {
+        "key": "ctrl+k ctrl+e",
+        "command": "workbench.action.quickOpen"
+    },
+    {
+        "key": "ctrl-e",
+        "command": "cursorEnd",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "ctrl-a",
+        "command": "cursorHome",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "ctrl+shift+a",
+        "command": "editor.action.selectAll"
+    },
+    {
+        "key": "ctrl+alt+a",
+        "command": "editor.action.selectAll"
+    }, 
+    {
+        "key": "ctrl+k ctrl-a",
+        "command": "workbench.action.tasks.runTask"
+    },
+    { 
+        "key": "ctrl+j ctrl+j",
+        "command": "cursorDown",
+        "when": "editorTextFocus" 
+    },
+    { 
+        "key": "ctrl+j ctrl+n",
+        "command": "cursorDown",
+        "when": "editorTextFocus" 
+    },
+    { 
+        "key": "ctrl+j ctrl+k",
+        "command": "cursorUp",
+        "when": "editorTextFocus" 
+    },
+    { 
+        "key": "ctrl+j ctrl+p",
+        "command": "cursorUp",
+        "when": "editorTextFocus" 
+    },
+    {
+        "key": "ctrl+k ctrl+k",
+        "command": "editor.action.deleteLines",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "ctrl+k ctrl+enter",
+        "command": "python.execInTerminal"
+    },
+    {
+        "key": "ctrl+=",
+        "command": "editor.action.fontZoomIn"
+    },
+    {
+        "key": "ctrl+-",
+        "command": "editor.action.fontZoomOut"
+    },
+    {
+        "key": "ctrl+k ctrl+z",
+        "command": "editor.action.fontZoomReset"
+    },
+    {
+        "key": "shift+alt+down",
+        "command": "editor.action.copyLinesDownAction",
+        "when": "editorTextFocus && !editorReadonly"
+    },
+    {
+        "key": "ctrl+shift+alt+down",
+        "command": "-editor.action.copyLinesDownAction",
+        "when": "editorTextFocus && !editorReadonly"
+    },
+    {
+        "key": "shift+alt+up",
+        "command": "editor.action.copyLinesUpAction",
+        "when": "editorTextFocus && !editorReadonly"
+    },
+    {
+        "key": "ctrl+shift+alt+up",
+        "command": "-editor.action.copyLinesUpAction",
+        "when": "editorTextFocus && !editorReadonly"
+    },
+    {
+        "key": "ctrl+alt+up",
+        "command": "editor.action.insertCursorAbove",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "ctrl+shift+up",
+        "command": "-editor.action.insertCursorAbove",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "shift+alt+up",
+        "command": "-editor.action.insertCursorAbove",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "ctrl+alt+down",
+        "command": "editor.action.insertCursorBelow",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "shift+alt+down",
+        "command": "-editor.action.insertCursorBelow",
+        "when": "editorTextFocus"
+    }
+]
