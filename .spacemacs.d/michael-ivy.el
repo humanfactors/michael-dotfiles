@@ -3,3 +3,6 @@
 (with-eval-after-load 'counsel
   (global-set-key  "\M-y" 'yank-pop)
   (define-key ivy-minibuffer-map (kbd "M-y") 'ivy-next-line))
+
+;; No more 
+(setq ivy-initial-inputs-alist nil)
