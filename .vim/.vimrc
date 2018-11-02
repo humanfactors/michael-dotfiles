@@ -18,3 +18,11 @@ inoremap <C-K> <Esc>lDa
 inoremap <C-U> <Esc>d0xi
 inoremap <C-Y> <Esc>Pa
 inoremap <C-X><C-S> <Esc>:w<CR>a
+
+" Mimic Emacs Line Editing in Insert Mode Only
+nnoremap <C-A> <Home>
+nnoremap <C-E> <End>
+nnoremap <C-K> <Esc>lDa
+nnoremap <C-U> <Esc>d0xi
+nnoremap <C-Y> <Esc>Pa
+nnoremap <C-X><C-S> <Esc>:w<CR>a

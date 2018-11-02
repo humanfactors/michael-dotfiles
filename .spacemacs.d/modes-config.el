@@ -1,29 +1,3 @@
-;; Python
-(setq python-shell-interpreter-args "")
-(setq python-tab-width 2)
-(setq tab-width 2)
-
-;; Go mode
-;; Mulitple Cursors
-
-(require 'multiple-cursors)
-(global-set-key (kbd "<f5> SPC") 'mc/edit-lines)
-(global-set-key (kbd "C->") 'mc/mark-next-like-this)
-(global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
-
-(when-system gnu/linux
-  (setq python-shell-interpreter "python3"))
-
-(when-system windows-nt
-  (setq python-shell-interpreter "python"))
-
-;; Pandoc
-;; (setq org-pandoc-options-for-markdown '((atx-headers . t)))
-;; (setq org-pandoc-options-for-latex-pdf '((latex-engine . "xelatex")))
-
-;; Golden Ratio
-(require 'golden-ratio)
-
 ;; Ranger Mode
 ;; (setq ranger-override-dired t)
 ;; (setq ranger-show-literal t)

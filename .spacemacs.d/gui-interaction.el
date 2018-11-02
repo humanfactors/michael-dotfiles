@@ -1,3 +1,6 @@
+;; Icons & doom
+(setq neo-theme 'icons)
+
 ;; (setq cua-mode nil)
 (setq evil-normal-state-cursor 'square)
 ;; Text Editing and Selection Configuration
@@ -130,12 +133,6 @@
 (global-set-key (kbd "M-C-]") 'move-border-right)
 (global-set-key (kbd "M-C-}") 'move-border-up)
 (global-set-key (kbd "M-C-{") 'move-border-down)
-
-(defmacro when-system (type &rest body)
-  "Evaluate BODY if `system-type' equals TYPE."
-  (declare (indent defun))
-  `(when (eq system-type ',type)
-     ,@body))
 
 
 (defun open-directory-in-system-viewer ()
