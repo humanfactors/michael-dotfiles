@@ -149,7 +149,6 @@ Uses `bjk-timestamp-format' for formatting the date/time."
 (global-set-key (kbd "C-x M-6") 'openpath-atc-derde)
 (global-set-key (kbd "C-x M-f") 'open-directory-in-system-viewer)
 
-(spacemacs/set-leader-keys "ok" '(find-file "~/.spacemacs.d/keybinds.el"))
 (spacemacs/set-leader-keys "ot" 'global-set-key)
 (spacemacs/set-leader-keys "ood" 'openpath-dropbox)
 (spacemacs/set-leader-keys "ooo" 'openpath-orgdir)
@@ -163,19 +162,46 @@ Uses `bjk-timestamp-format' for formatting the date/time."
 
 (spacemacs/set-leader-keys "o TAB" 'open-directory-in-system-viewer)
 
-
 (defmacro define-openpath-spacemacs (pathname dir keybind)
   (let ((func (intern (concat "openpath-" pathname))))
-    `(defun ,func ()
-       (interactive) (find-file ,dir))
-    `(spacemacs/set-leader-keys ,keybind ',func))
-  )
+    `(progn
+       (defun ,func ()
+         (interactive) (find-file ,dir))
+       (spacemacs/set-leader-keys ,keybind ',func))))
 
-(defmacro define-openpath-emacs (pathname dir keybind)
-  (let ((func (intern (concat "openpath-" pathname))))
-    `(defun ,func ()
-       (interactive) (find-file ,dir))
-    `(spacemacs/set-leader-keys ,keybind ',func))
-  )
 
-(define-openpath-emacs "dropboxmain" "~/Dropbox" "ooz")
+(defmacro define-openfile-spacemacs (filename dir keybind)
+  (let ((func (intern (concat "openfile-" filename))))
+    `(progn
+       (defun ,func ()
+         (interactive) (find-file ,dir))
+       (spacemacs/set-leader-keys ,keybind ',func))))
+
+
+(define-openpath-spacemacs "dropboxmain" "~/Dropbox" "ooz")
+(define-openpath-spacemacs "endurance" "~/Code/endurance" "ooe")
+(define-openpath-spacemacs "AHK" "~/Dropbox/Code/AHK" "ook")
+
+(define-openfile-spacemacs "keybinds" "~/.spacemacs.d/keybinds.el" "ok")
+
+;; (defmacro define-openpath-spacemacs (pathname dir keybind)
+;;   (let ((func (intern (concat "openpath-" pathname))))
+;;     `(defun ,func ()
+;;        (interactive)
+;;        (find-file ,dir))
+;;     `(spacemacs/set-leader-keys ,keybind ',func))
+;;   )
+
+;; (defmacro define-openpath-emacs (pathname dir keybind)
+;;   (let ((func (intern (concat "openpath-" pathname))))
+;;     `(defun ,func ()
+;;        (interactive)
+;;        (find-file ,dir))
+;;     `(global-set-key (kbd ,keybind) ',func)))
+
+;; ;; (define-openpath-emacs "dropboxmain" "~/Dropbox" "ooz")
+;; (define-openpath-emacs "endurance-main" "~/code/endurance/" "C-x M-1")
+
+;; (macroexpand '(define-openpath-emacs "endurance-main" "~/code/endurance/" "C-x M-1"))
+
+;; (macroexpand '(define-openpath-spacemacs "endurance-main" "~/code/endurance/" "ooc"))
