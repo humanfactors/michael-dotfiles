@@ -51,7 +51,9 @@
 ;; Allow 20MB of memory (instead of 0.76MB default) before calling
 ;; garbage collection. This means GC runs less often, which speeds
 ;; up some operations
-(setq gc-cons-threshold 20000000)
+;; (setq gc-cons-threshold 20000000)
+(setq gc-cons-threshold-original gc-cons-threshold)
+(setq gc-cons-threshold (* 1024 1024 100))
 
 ;; By default, BACKSPACE ON EMACS turns a tab character into a set of spaces
 ;; & deletes one. This sets backspace to delete 1 character instead of 1 column.
