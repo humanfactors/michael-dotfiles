@@ -1,0 +1,22 @@
+Windows Registry Editor Version 5.00
+;; Dired for directory
+[HKEY_CURRENT_USER\Software\Classes\Directory\shell\emacsopensameframe]
+@="&Emacs: Open in dired"
+"icon"="C:\\Users\\278330A\\bin\\emacs\\bin\\emacsclientw.exe"
+[HKEY_CURRENT_USER\Software\Classes\Directory\shell\emacsopensameframe\command]
+@="C:\\Users\\278330A\\bin\\emacs\\bin\\emacsclientw.exe  -n --alternate-editor=\"C:\\Users\\278330A\\bin\\emacs\\bin\\runemacs.exe\" -n \"%V\""
+
+;; Dired for directory background
+[HKEY_CURRENT_USER\Software\Classes\Directory\Background\shell\emacsopensameframe]
+@="&Emacs: Open in dired"
+"icon"="C:\\Users\\278330A\\bin\\emacs\\bin\\emacsclientw.exe"
+[HKEY_CURRENT_USER\Software\Classes\Directory\Background\shell\emacsopensameframe\command]
+@="C:\\Users\\278330A\\bin\\emacs\\bin\\emacsclientw.exe  -n --alternate-editor=\"C:\\Users\\278330A\\bin\\emacs\\bin\\runemacs.exe\" -n \"%V\""
+
+;; Dired for drive background
+[HKEY_CURRENT_USER\Software\Classes\Drive\Background\shell\EmacsOpenDirSameFrame]
+@="&Emacs: Open in dired"
+"icon"="C:\\Users\\278330A\\bin\\emacs\\bin\\emacsclientw.exe"
+[HKEY_CURRENT_USER\Software\Classes\Drive\Background\shell\EmacsOpenDirSameFrame\command]
+;; as drives haven't space inside their name don't use quoting
+@="C:\\Users\\278330A\\bin\\emacs\\bin\\emacsclientw.exe  -n --alternate-editor=\"C:\\Users\\278330A\\bin\\emacs\\bin\\runemacs.exe\" -n %L"
