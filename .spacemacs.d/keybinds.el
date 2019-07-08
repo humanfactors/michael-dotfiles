@@ -3,6 +3,11 @@
 (global-set-key (kbd "C-x k") 'spacemacs/kill-this-buffer)
 (global-set-key (kbd "C-x K") 'kill-buffer-and-window)
 
+(with-eval-after-load 'evil-maps
+	(define-key evil-motion-state-map (kbd "C-a") 'move-beginning-of-line)
+	(define-key evil-motion-state-map (kbd "C-e") 'move-end-of-line))
+
+
 (global-set-key (kbd "C-z") 'undo)
 (global-set-key (kbd "C-S-Z") 'redo)
 
@@ -16,7 +21,6 @@
 (global-set-key (kbd "s-<prior>") `previous-buffer)
 (global-set-key (kbd "s-<next>") `next-buffer)
 (global-set-key (kbd "M-D") 'spacemacs/duplicate-line-or-region)
-
 (global-set-key [f8] 'neotree-toggle)
 
 (global-set-key [f12] 'magit)
@@ -42,7 +46,6 @@
   (bind-key "C-c `" #'spacemacs/org-code org-mode-map))
 
 ;; Insert newline after current line
-
 (defun end-of-line-and-indented-new-line ()
   (interactive)
   (end-of-line)
