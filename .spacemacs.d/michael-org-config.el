@@ -30,7 +30,7 @@
   (setq org-directory "~/Dropbox/org/")
 
   (setq org-agenda-files (list "~/Dropbox/org/"
-                               "~/Dropbox/Thesis"
+                               "~/Dropbox/org/Committees/"
                                ))
 
   (setq org-publish-project-alist
