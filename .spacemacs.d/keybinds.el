@@ -95,6 +95,7 @@ Uses `bjk-timestamp-format' for formatting the date/time."
 (spacemacs/declare-prefix "<f5>" "quick-utils-menu")
 (define-key global-map (kbd "<f5><f9>") 'easy-hugo)
 (define-key global-map (kbd "<f5><f5>") 'deft)
+(define-key global-map (kbd "<f7><f7>") 'visual-line-mode)
 
 
 
