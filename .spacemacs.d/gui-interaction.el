@@ -7,7 +7,8 @@
 (delete-selection-mode 1)
 (setq-default fill-column 100)
 (setq mouse-yank-at-point nil) ;; Fixes bug associated with middle click paste for spell check
-(setq auto-fill-mode nil)
+;; (setq auto-fill-mode nil)
+;; (setq visual-fill-column-mode)
 (setq tab-width 4) ; or any other preferred value
 (setq-default
  isearch-allow-scroll t                 ; Allow scrolling in an isearch session
@@ -24,7 +25,8 @@
 ;;; Buffer Display Configuration
 (setq powerline-default-separator 'utf-8)
 (setq word-wrap 1)
-(global-visual-line-mode t)
+(add-hook 'text-mode-hook (lambda () (global-visual-line-mode t)))
+
 
 ;;; GUI Configuration
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
@@ -52,8 +54,8 @@
 ;; garbage collection. This means GC runs less often, which speeds
 ;; up some operations
 ;; (setq gc-cons-threshold 20000000)
-(setq gc-cons-threshold-original gc-cons-threshold)
-(setq gc-cons-threshold (* 1024 1024 100))
+;; (setq gc-cons-threshold-original gc-cons-threshold)
+;; (setq gc-cons-threshold (* 1024 1024 100))
 
 ;; By default, BACKSPACE ON EMACS turns a tab character into a set of spaces
 ;; & deletes one. This sets backspace to delete 1 character instead of 1 column.
