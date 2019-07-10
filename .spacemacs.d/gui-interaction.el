@@ -7,7 +7,7 @@
 (delete-selection-mode 1)
 (setq-default fill-column 100)
 (setq mouse-yank-at-point nil) ;; Fixes bug associated with middle click paste for spell check
-(setq auto-fill-mode 1)
+(setq auto-fill-mode nil)
 (setq tab-width 4) ; or any other preferred value
 (setq-default
  isearch-allow-scroll t                 ; Allow scrolling in an isearch session
