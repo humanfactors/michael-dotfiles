@@ -1,7 +1,6 @@
 ;; Org Directory
 
-(add-hook 'org-mode-hook
-          'auto-fill-mode)
+(add-hook 'org-mode-hook 'visual-fill-column-mode)
 ;; Org Configuration
 
 (with-eval-after-load 'ox-latex
