@@ -1,5 +1,5 @@
 ;; Icons & doom
-(setq neo-theme 'icons)
+;; (setq neo-theme 'icons)
 
 ;; (setq cua-mode nil)
 (setq evil-normal-state-cursor 'square)
@@ -25,8 +25,9 @@
 ;;; Buffer Display Configuration
 (setq powerline-default-separator 'utf-8)
 (setq word-wrap 1)
-(add-hook 'text-mode-hook (lambda () (global-visual-line-mode t)))
-
+(add-hook 'text-mode-hook #'visual-line-mode)
+(add-hook 'visual-line-mode-hook #'visual-fill-column-mode)
+(setq visual-fill-column-width 100)
 
 ;;; GUI Configuration
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
