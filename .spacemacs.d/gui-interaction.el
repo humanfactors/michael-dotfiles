@@ -28,7 +28,7 @@
 (add-hook 'text-mode-hook #'visual-line-mode)
 (add-hook 'visual-line-mode-hook #'visual-fill-column-mode)
 (setq visual-fill-column-width 100)
-
+(setq dired-dnd-protocol-alist nil)
 ;;; GUI Configuration
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
 (menu-bar-mode 1)
