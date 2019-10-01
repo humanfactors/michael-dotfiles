@@ -1,5 +1,16 @@
+options("digits.secs"=3)            # show sub-second time stamps
+
+
+## Create invisible environment ot hold all your custom functions
+.env <- new.env()
+
+## Single character shortcuts for summary() and head().
+.env$s <- base::summary
+.env$h <- utils::head
+.env$n <- base::names
+
 # https://stackoverflow.com/questions/25576358/calculate-cumsum-while-ignoring-na-values
-cumSkipNA <- function(x, FUNC)
+.env$cumSkipNA <- function(x, FUNC)
 {
   d <- deparse(substitute(FUNC))
   funs <- c("max", "min", "prod", "sum")
@@ -10,7 +21,7 @@ cumSkipNA <- function(x, FUNC)
 }
 
 # Load my custom favourite packages
-pkgLoad <- function( packages = "favourites" ) {
+.env$pkgLoad <- function( packages = "favourites" ) {
 
     if( length( packages ) == 1L && packages == "favourites" ) {
         packages <- c( "tidyverse", "ggplot2", "dplyr", "testthat"
@@ -38,7 +49,7 @@ pkgLoad <- function( packages = "favourites" ) {
 }
 
 # Load the required data
-load_sqlite3_data <- function(databasepath, tablename) {
+.env$load_sqlite3_data <- function(databasepath, tablename) {
   sqlite.driver <- dbDriver("SQLite")
   db <- dbConnect(sqlite.driver, dbname = databasepath)
   table <- dbReadTable(db,tablename)
@@ -46,20 +57,20 @@ load_sqlite3_data <- function(databasepath, tablename) {
   return(as_tibble(table))
 }
 
-remove_extra_quotes <- function(.data, name){
+.env$remove_extra_quotes <- function(.data, name){
   name <- enquo(name)
   .data %>% 
     mutate(!!quo_name(name) := gsub("\"","", !!name))
 }
 
-not_all_missing <- function(x) any(!is.na(x))
+.env$not_all_missing <- function(x) any(!is.na(x))
 
 
 '%!in%' <- function(x,y)!('%in%'(x,y))
 
 '%ni%' <- Negate('%in%')
 
-ggplotRegression <- function (fit) {
+.env$ggplotRegression <- function (fit) {
 
   require(ggplot2)
 
@@ -71,3 +82,6 @@ ggplotRegression <- function (fit) {
                        " Slope =",signif(fit$coef[[2]], 5),
                        " P =",signif(summary(fit)$coef[2,4], 5)))
 }
+
+
+.env$workspaceimage.saver <- save.image(paste(gsub(":", "-", Sys.time()),".RDS",sep=""))
