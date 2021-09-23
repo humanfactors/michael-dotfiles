@@ -1,0 +1,11 @@
+{
+"key": "ctrl+shift+o"
+  "command": "workbench.action.gotoSymbol"
+},
+	{ "key": "alt+o", "command": "workbench.action.terminal.focus"},
+	{ "key": "alt+o", "command": "workbench.action.focusActiveEditorGroup", "when": "terminalFocus"},
+	{ "key": "alt+shift+o", "command": "workbench.action.navigateEditorGroups"},
+	{ "key": "alt+shift+o", "command": "workbench.action.focusActiveEditorGroup", "when": "terminalFocus"},
+
+
+workbench.action.quickOpenNavigatePreviousInFilePicker

@@ -85,3 +85,4 @@ options("digits.secs"=3)            # show sub-second time stamps
 
 
 .env$workspaceimage.saver <- save.image(paste(gsub(":", "-", Sys.time()),".RDS",sep=""))
+

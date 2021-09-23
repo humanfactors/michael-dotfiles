@@ -8,7 +8,7 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 ;; ----------------------------------------------------------
 
 $CapsLock::Ctrl
-
+$LShift::Shift
 
 ;; Make sure we can turn this off if needed
 $#CapsLock::
