@@ -2,18 +2,21 @@
 #Warn  ; Enable warnings to assist with detecting common errors.
 #SingleInstance, force
 SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
+Run, %A_ScriptDir%\hotstring-symbol-insert.ahk
+
+
+
 
 ;; ----------------------------------------------------------
 ;;                     GENERAL BINDS
 ;; ----------------------------------------------------------
 
-$CapsLock::Ctrl
-$LShift::Shift
+;; $CapsLock::Ctrl
+
 
 ;; Make sure we can turn this off if needed
-$#CapsLock::
-    SetCapsLockState, AlwaysOff
-Return
+$#Numlock::CapsLock
+
 
 
 ;; ^XButton1::#Left
@@ -202,7 +205,6 @@ SendRmdPrint() {
     Send, %command%
 }
 
-
 #IfWinActive ahk_exe rstudio.exe
 ^F1::SendRgument("summary")
 ^+F1::SendPasteRgument("summary")
@@ -239,6 +241,38 @@ changeDialDir(path) {
     >+h::changeDialDir("C:\Users\278330A\")
     >+b::changeDialDir("C:\Users\278330A\Dropbox\Library")
 #IfWinActive
+
+
+; GetActiveExplorerPath()
+; {
+; 	explorerHwnd := WinActive("ahk_class CabinetWClass")
+; 	if (explorerHwnd)
+; 	{
+; 		for windowI in ComObjCreate("Shell.Application").Windows
+; 		{
+; 			if (windowI.hwnd==explorerHwnd)
+; 			{
+; 				return windowI.Document.Folder.Self.Path
+; 			}
+; 		}
+; 	}
+; }
+
+; #If WinActive("ahk_class CabinetWClass") || WinActive("ahk_class ExploreWClass")
+; ;; Updates the clipboard with the unquoted full-path for the selected
+; ;; file/folder in Windows Explorer
+; +^c:: ; Shift+Alt+f
+;     SendInput, +{AppsKey}a
+;     ClipWait, 1  ; Wait up to three seconds
+;     if (ErrorLevel && !Clipboard) {
+;         Clipboard := GetActiveExplorerPath()
+;         Return
+;     }    
+;     Clipboard := ""
+;     Clipboard := Trim(Clipboard, """")
+; Return
+
+; #IF
 
 
 

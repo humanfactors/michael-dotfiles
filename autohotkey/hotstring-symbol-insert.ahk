@@ -1,67 +1,7 @@
-#Include %A_ScriptDir%\emacs-key-sequence.ahk
-#SingleInstance, force
+#SingleInstance, Force
+SendMode Input
+SetWorkingDir, %A_ScriptDir%
 
-Menu, Tray, Icon, %A_ScriptDir%\icons\write_file.ico,
-
-^NumpadDown::Suspend, Toggle
-
-$!\::
-map:=Object()
-map.insert("!\a", "alpha")
-map.insert("!\b", "beta")
-map.insert("!\c", "gamma")
-map.insert("!\d", "delta")
-map.insert("!\e", "epislon")
-map.insert("!\z", "zeta")
-map.insert("!\h", "eta")
-map.insert("!\j", "theta")
-map.insert("!\i", "iota")
-map.insert("!\k", "kappa")
-map.insert("!\l", "lambda")
-map.insert("!\m", "mu")
-map.insert("!\n", "nu")
-map.insert("!\q", "xi")
-map.insert("!\o", "omicron")
-map.insert("!\p", "pi")
-map.insert("!\r", "rho")
-map.insert("!\s", "sigma")
-map.insert("!\t", "tau")
-map.insert("!\u", "upsilon")
-map.insert("!\f", "phi")
-map.insert("!\x", "chi")
-map.insert("!\y", "psi")
-map.insert("!\w", "omega")
-prefixKey("!\",map)
-return
-
-$!|::
-map:=Object()
-map.insert("!|a", "BigAlpha")
-map.insert("!|b", "BigBeta")
-map.insert("!|g", "BigGamma")
-map.insert("!|d", "BigDelta")
-map.insert("!|e", "BigEpislon")
-map.insert("!|z", "BigZeta")
-map.insert("!|h", "BigEta")
-map.insert("!|j", "BigTheta")
-map.insert("!|i", "BigIota")
-map.insert("!|k", "BigKappa")
-map.insert("!|l", "BigLambda")
-map.insert("!|m", "BigMu")
-map.insert("!|n", "BigNu")
-map.insert("!|q", "BigXi")
-map.insert("!|o", "BigOmicron")
-map.insert("!|p", "BigPi")
-map.insert("!|r", "BigRho")
-map.insert("!|s", "BigSigma")
-map.insert("!|t", "BigTau")
-map.insert("!|u", "BigUpsilon")
-map.insert("!|f", "BigPhi")
-map.insert("!|x", "BigChi")
-map.insert("!|y", "BigPsi")
-map.insert("!|w", "BigOmega")
-prefixKey("!|",map)
-return
 
 alpha() {
     Send {U+03B1}
@@ -262,3 +202,5 @@ BigOmega() {
 :CX:\Chi::BigChi()
 :CX:\Psi::BigPsi()
 :CX:\Omega::BigOmega()
+
+^NumpadDown::Suspend, Toggle
